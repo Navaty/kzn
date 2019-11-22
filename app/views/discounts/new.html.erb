@@ -37,12 +37,17 @@
     <%= form.label :offer %><br>
     <%= form.number_field :offer %>
   </p>
-
+  <p>
+    <%= form.label :images %><br>
+    <%= form.file_field :images, multiple: true %>
+  </p>
 
     <p>
     <%= form.label :active %><br>
     <%= form.check_box :active %>
   </p>
+
+  
 
   <p>
     <%= form.submit %>

@@ -2,3 +2,6 @@
 <%= @discount.title %> <br>
 <%= @discount.body %> <br>
 <%= @discount.end_time %>
+<%if @discount.images.any? %>
+<%= image_tag @discount.images_url %>
+<% end %>

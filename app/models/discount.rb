@@ -1,3 +1,5 @@
 class Discount < ApplicationRecord
-  belongs_to :sale
+	mount_uploaders :images, ImageUploader
+	serialize :images, JSON
+	belongs_to :sale
 end

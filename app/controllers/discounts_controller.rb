@@ -23,7 +23,7 @@ class DiscountsController < ApplicationController
 
 	private
     def discount_params
-      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer)
+      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, {avatars: []})
     end
 
 end
