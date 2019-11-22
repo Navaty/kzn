@@ -1,0 +1,19 @@
+<%= render 'shared/breadcrumb', sale: @sale %>
+<h1><%=@sale.name%></h1>
+<section id="discount">
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>srok</th>
+    <th>adress</th>
+    <th>sale</th>
+    <th>Active?</th>
+    <th>type</th> 
+
+    <th colspan="2"></th>
+  </tr>
+
+ <%= render @discounts %>
+</table>
+</section>

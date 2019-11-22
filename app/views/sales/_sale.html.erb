@@ -1,0 +1,6 @@
+    <tr>
+      <td><%= sale.name %></td>
+      <td><%= sale.parent.name if sale.parent.present? %></td>
+      <td><%= link_to 'Show', sale_path(sale) %></td> 
+      <td><%= link_to 'Edit', edit_sale_path(sale) %></td> 
+    </tr>

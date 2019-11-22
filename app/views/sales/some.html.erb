@@ -1,0 +1,8 @@
+<h2>Категории </h2>
+<%#class= nav nav-pills nav stacked %>
+<%Sale.roots.each do |s| %>
+<li><%#nav-item%>
+<%= link_to sale.name, sale  #nav-link #{'active' if current_page?(sale_path(sale))}"%>
+<%= render 'sub_sales', sales: sale.root.descendants.arrange %>
+</li> 
+<% end %>

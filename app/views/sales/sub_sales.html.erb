@@ -1,0 +1,6 @@
+<%# ul nav nav-pills nav-stacked nested_nav %>
+<% sales.each do |s, c| %>
+	<li>
+		<%= link_to s.name, s #class: "nav-link #{'active' if current...." %>
+	</li>
+<%end%>

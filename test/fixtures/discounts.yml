@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyText
+  end_time: 2019-11-19
+  adress: MyString
+  type: 1
+  active: false
+  sale: one
+
+two:
+  title: MyString
+  body: MyText
+  end_time: 2019-11-19
+  adress: MyString
+  type: 1
+  active: false
+  sale: two
