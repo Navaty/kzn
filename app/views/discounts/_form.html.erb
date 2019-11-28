@@ -1,4 +1,3 @@
-    <%= javascript_include_tag Ckeditor.cdn_url %>
 <%= form_with(model: @discount, local: true) do |form| %>
 <% if discount.errors.any? %>
       <div id="error_explanation">
@@ -50,7 +49,6 @@
         <%= form.file_field :images, multiple: true %>
       </div>
     </div>
-    <button type="button" class="add-image">Добавить еще</button>
   </div>
 
     <div>

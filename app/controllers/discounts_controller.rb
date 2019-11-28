@@ -3,6 +3,10 @@ class DiscountsController < ApplicationController
 		@discounts = Discount.all
 	end
 
+	def show
+		@discount = Discount.find(params[:id])
+	end
+
 	def new
 		@discount = Discount.new
 	end
@@ -11,15 +15,13 @@ class DiscountsController < ApplicationController
 		@discount = Discount.new(discount_params)
 
     	if @discount.save
-      		redirect_to discounts_path
+      		redirect_to @discount
     	else
     	  render 'new'
  	   	end
 	end
 
-	def show
-		@discount = Discount.find(params[:id])
-	end
+	
 
 	def edit
 		@discount = Discount.find(params[:id])
@@ -36,6 +38,9 @@ class DiscountsController < ApplicationController
 	end
 
 	def destroy
+		@discount = Discount.find(params[:id])
+		@discount.destroy
+		redirect_to discounts_url, notice: 'Скидка удалена.'
 	end
 
 	private
