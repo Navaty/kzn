@@ -21,9 +21,26 @@ class DiscountsController < ApplicationController
 		@discount = Discount.find(params[:id])
 	end
 
+	def edit
+		@discount = Discount.find(params[:id])
+	end
+
+	def update
+		@discount = Discount.find(params[:id])
+
+		if @discount.update(discount_params)
+			redirect_to discount_path
+		else
+			render 'new'
+		end
+	end
+
+	def destroy
+	end
+
 	private
     def discount_params
-      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, {avatars: []})
+      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, {images: []})
     end
 
 end

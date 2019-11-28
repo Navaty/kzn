@@ -1,7 +1,9 @@
 <%= render 'shared/breadcrumb', sale: @discount.sale %> <br>
 <%= @discount.title %> <br>
-<%= @discount.body %> <br>
+<%= raw @discount.body %> <br>
 <%= @discount.end_time %>
 <%if @discount.images.any? %>
-<%= image_tag @discount.images_url %>
+<% @discount.images_urls.each do |p| %>
+<%= image_tag p %>
+<%end%>
 <% end %>

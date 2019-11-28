@@ -1,6 +1,5 @@
     <tr>
       <td><%= discount.title %></td>
-      <td><%= discount.body %></td>
       <td><%= discount.end_time %></td>
       <td><%= discount.adress %></td>
       <td><%= discount.sale_id %></td>
@@ -8,4 +7,5 @@
       <td><%= discount.offer %></td>
 
       <td><%= link_to 'Show', discount_path(discount) %></td> 
+      <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
     </tr>
