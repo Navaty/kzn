@@ -7,9 +7,128 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Rubik|Share+Tech&amp;subset=cyrillic" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+  	<div class="container sticky-top">
+	    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <a href="#" class="navbar-left"> <%= image_tag "logo.png", size: 80 %></a>
+
+	        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropkz" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                        <span style="display: block">На день рождения</span>
+	                        <%= image_tag "catarrow.svg", size: '27x9' %>
+	                    </a>
+	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="#">Something else here</a>
+	                    </div>
+	                </li>
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropkz" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                        <span style="display: block">Горячие предложения</span>
+	                        <%= image_tag "catarrow.svg", size: '27x9' %>
+
+	                    </a>
+	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="#">Something else here</a>
+	                    </div>
+	                </li>
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropkz" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                        <span style="display: block">Интересные места</span>
+	                        <%= image_tag "catarrow.svg", size: '27x9' %>
+
+	                    </a>
+	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="#">Something else here</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+
+	                    </div>
+	                </li>
+	                <li class="nav-item dropdown">
+	                    <a class="nav-link dropkz" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                        <span style="display: block">Интересно почитать</span>
+	                        <%= image_tag "catarrow.svg", size: '27x9' %>
+	                    </a>
+	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                        <a class="dropdown-item" href="#">Action</a>
+	                        <a class="dropdown-item" href="#">Another action</a>
+	                        <div class="dropdown-divider"></div>
+	                        <a class="dropdown-item" href="#">Something else here</a>
+	                    </div>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link nav-sim dropkz" href="#">
+	                        Сотрудничество
+	                    </a>
+	                </li>
+	            </ul>
+	            <div class="soc-bt mr-auto d-none d-xl-block">
+	                <a class="nav-soc" href="#"> <i class="fab fa-facebook-square fa-2x"></i></a>
+
+
+	                <a class="nav-soc" href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
+
+	                <a class="nav-soc" href="#"><i class="fab fa-vk fa-2x"></i></a>
+
+	                <a class="nav-soc" href="#"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
+
+	                <a class="nav-soc" href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
+	            </div>
+	        </div>
+	    </nav>
+	</div>
+	<%= render 'shared/catslider' %> <br>
+	<div class="container main conpost">
+	    <div class="row">
+
+	        <div class="col-lg-9 col-md-12 offers">           
+				<%= yield %>
+			</div>
+	        <div class="col-lg-3 d-none d-lg-block adws-post">
+
+	        </div>
+	    </div>
+	</div>
+    
   </body>
 </html>

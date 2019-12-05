@@ -1,12 +1,10 @@
-    <tr>
-      <td><%= discount.title %></td>
-      <td><%= discount.end_time %></td>
-      <td><%= discount.adress %></td>
-      <td><%= discount.sale_id %></td>
-      <td><%= discount.active %></td>
-      <td><%= discount.offer %></td>
-
-      <td><%= link_to 'Show', discount_path(discount) %></td> 
-      <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
-      <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="col-md-4 col-sm-12 offer_bloks_el">
+      <a href=<%= discount_path(discount) %>>
+          <%= if discount.images.any? 
+            image_tag discount.images_urls[0], class: "offers_elem"
+            end %>
+          <div class="offers_elem_text">
+           <%= discount.title %>
+          </div>
+      </a>
+    </div>

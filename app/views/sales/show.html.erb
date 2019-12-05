@@ -1,4 +1,5 @@
 <%= render 'shared/breadcrumb', sale: @sale %>
+
 <h1><%=@sale.name%></h1>
 <section id="discount">
 <table>
@@ -14,6 +15,11 @@
     <th colspan="2"></th>
   </tr>
 
- <%= render @discounts %>
+
 </table>
 </section>
+<div class="sale">
+    <div class="row offer_bloks">
+        <%= render @discounts %>
+    </div>
+</div>
