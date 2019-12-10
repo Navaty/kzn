@@ -1,0 +1,11 @@
+    <div class="col-md-4 col-sm-12 offer_bloks_el">
+      <a href=<%= post_path(post) %>>
+          <%= if post.images.any? 
+            image_tag post.images_urls[0], class: "offers_elem"
+            end %>
+          <div class="offers_elem_text">
+           <%= post.title %>
+          </div>
+      </a>
+      <%= link_to 'Редактировать', edit_post_path(post) %>
+    </div>

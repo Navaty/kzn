@@ -21,7 +21,9 @@ class DiscountsController < ApplicationController
  	   	end
 	end
 
-	
+	def moder
+		@discounts = Discount.disactive
+	end
 
 	def edit
 		@discount = Discount.find(params[:id])

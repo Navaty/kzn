@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191127112154) do
+ActiveRecord::Schema.define(version: 20191210142155) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -36,12 +36,50 @@ ActiveRecord::Schema.define(version: 20191127112154) do
     t.index ["sale_id"], name: "index_discounts_on_sale_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "adress"
+    t.date "start_time"
+    t.date "end_time"
+    t.integer "event_id"
+    t.boolean "active", default: false, null: false
+    t.boolean "free", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_places_on_event_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "tiding_id"
+    t.boolean "active", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tiding_id"], name: "index_posts_on_tiding_id"
+  end
+
   create_table "sales", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_sales_on_ancestry"
+  end
+
+  create_table "tidings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_tidings_on_ancestry"
   end
 
 end

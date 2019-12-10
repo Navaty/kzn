@@ -1,13 +1,12 @@
-<%= render 'shared/breadcrumb', sale: @discount.sale %> <br>
+<%= render 'shared/breadcrumb', sale: @post.tiding %> <br>
 
-<h1><%= @discount.title %> </h1>
-<%= link_to 'Редактировать', edit_discount_path(@discount) %>
-
-<%if @discount.images.any? %>
+<h1><%= @post.title %> </h1>
+<%= link_to 'Редактировать', edit_post_path(@post) %>
+<%if @post.images.any? %>
             <div id="carousel-thumb" class="carousel posts-carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
             <!--Slides-->
 	            <div class="carousel-inner" role="listbox">
-	            	<% @discount.images_urls.each_with_index do |p, index| %>
+	            	<% @post.images_urls.each_with_index do |p, index| %>
 	                <div class="carousel-item <%= 'active' if index == 0 %>">
 	                    <%= image_tag p, class:  "d-block w-100"%>
 	                </div>s
@@ -25,7 +24,7 @@
 	            </a>
 	            <!--/.Controls-->
 	            <ol class="carousel-indicators posts-carousel-indicator">
-	            	<% @discount.images_urls.each_with_index do |p, index| %>
+	            	<% @post.images_urls.each_with_index do |p, index| %>
 	                <li data-target="#carousel-thumb" data-slide-to="<%= index %>" class="<%='active' if index == 0%>">
 	                    <%= image_tag p, class:  "w-100"%>
 	                </li>
@@ -33,14 +32,11 @@
 	            </ol>
         </div>
         <% end %>
+
             <div class="posttext">
-	            <span class="posttime">Срок действия: <%= @discount.end_time %></span>
-	            <p></p>
-	            <span class="posttime">Адрес: <%= @discount.adress %></span>
-	            <p></p>
 	            <div class="postdesc">
 	                <h4>Описание</h4>
-	                <%= raw @discount.body %>
+	                <%= raw @post.body %>
 	            </div>
 	            <div class="socshare">
 	                <p class="sharepost"> <span class="sharepost">Поделиться с друзьями:</span>
@@ -60,7 +56,7 @@
 
             </div>
             <div class="col-md-4 mb-4 post-back offset-lg-8">
-                <%= link_to 'Назад к разделу', discounts_path, class: "kz-btn btn-back form-control"%>
+                <%= link_to 'Назад к разделу', posts_path, class: "kz-btn btn-back form-control"%>
             </div>
             <div class="something align-content-center">
                 <p class="sometext">Что то здесь</p>

@@ -15,7 +15,7 @@ class SalesController < ApplicationController
 	end
 	def show
 		@sale = Sale.find(params[:id])
-		@discounts = Discount.where(sale_id: [@sale.subtree_ids])
+		@discounts = Discount.where(sale_id: [@sale.subtree_ids]).active #ancestry need to optimized
 
 	end
 	def edit
