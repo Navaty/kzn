@@ -1,10 +1,10 @@
-<%= form_with(model: @discount, local: true) do |form| %>
-<% if discount.errors.any? %>
+<%= form_with(model: @event, local: true) do |form| %>
+<% if event.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(discount.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this post from being saved:</h2>
 
         <ul>
-        <% discount.errors.full_messages.each do |msg| %>
+        <% event.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -12,50 +12,13 @@
     <% end %>
 
   <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
   </div>
   <div>
-    <%= form.label :body %><br>
-    <%= form.cktext_area :body, id: :discount_body %>
+    <%= form.label :Родитель %><br>
+    <%= form.collection_select :parent_id, Event.order(:name), :id, :name, {include_blank: true } %> <%# where("id != #{@sale.id}") %>
   </div>
-  <div>
-    <%= form.label :end_time %><br>
-    <%= form.date_field :end_time %>
-  </div>
-  <div>
-    <%= form.label :adress %><br>
-    <%= form.text_field :adress %>
-  </div>
-  <div>
-    <%= form.label :Категория %><br>
-    <%= form.collection_select :sale_id, Sale.order(:name), :id, :name, :promt =>"Select one" %>
-  </div>
-  <div>
-    <%= form.label :offer %><br>
-    <%= form.number_field :offer %>
-  </div>
-  <div>
-    <%= form.label :images %>
-    <div class="image-sortable">
-      <% discount.images.each do |image| %>
-        <div class="image">
-          <%= hidden_field :discount, :images, multiple: true, value:  image.cache_name || image.identifier %>
-          <%= image_tag(image.url, height: 50) %>
-          <button type="button" class="remove-image">Удалить</button>
-        </div>
-      <% end %>
-      <div class="image">
-        <%= form.file_field :images, multiple: true %>
-      </div>
-    </div>
-  </div>
-
-    <div>
-    <%= form.label :active %><br>
-    <%= form.check_box :active %>
-  </div>
-
   
 
   <div>
@@ -64,4 +27,4 @@
 
 <% end %>
 
-<%= link_to 'Back', sales_path %>
+<%= link_to 'Back', events_path %>

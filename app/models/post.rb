@@ -1,3 +1,8 @@
 class Post < ApplicationRecord
-  belongs_to :tiding
+	mount_uploaders :images, ImageUploader
+	serialize :images, JSON
+	belongs_to :tiding
+	scope :active, -> {where(active: true)}
+	scope :disactive, -> {where(active: false)}
+
 end

@@ -1,6 +1,6 @@
 class DiscountsController < ApplicationController
 	def index
-		@discounts = Discount.all
+		@discounts = Discount.order('active DESC')
 	end
 
 	def show

@@ -1,67 +1,8 @@
-<%= render 'shared/breadcrumb', sale: @discount.sale %> <br>
+<%= render 'shared/breadcrumb', sale: @event %>
 
-<h1><%= @discount.title %> </h1>
-<%= link_to 'Редактировать', edit_discount_path(@discount) %>
-
-<%if @discount.images.any? %>
-            <div id="carousel-thumb" class="carousel posts-carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
-            <!--Slides-->
-	            <div class="carousel-inner" role="listbox">
-	            	<% @discount.images_urls.each_with_index do |p, index| %>
-	                <div class="carousel-item <%= 'active' if index == 0 %>">
-	                    <%= image_tag p, class:  "d-block w-100"%>
-	                </div>s
-	                <%end%>
-	            </div>
-	            <!--/.Slides-->
-	            <!--Controls-->
-	            <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	                <span class="sr-only">Previous</span>
-	            </a>
-	            <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	                <span class="sr-only">Next</span>
-	            </a>
-	            <!--/.Controls-->
-	            <ol class="carousel-indicators posts-carousel-indicator">
-	            	<% @discount.images_urls.each_with_index do |p, index| %>
-	                <li data-target="#carousel-thumb" data-slide-to="<%= index %>" class="<%='active' if index == 0%>">
-	                    <%= image_tag p, class:  "w-100"%>
-	                </li>
-	                <%end%>
-	            </ol>
-        </div>
-        <% end %>
-            <div class="posttext">
-	            <span class="posttime">Срок действия: <%= @discount.end_time %></span>
-	            <p></p>
-	            <span class="posttime">Адрес: <%= @discount.adress %></span>
-	            <p></p>
-	            <div class="postdesc">
-	                <h4>Описание</h4>
-	                <%= raw @discount.body %>
-	            </div>
-	            <div class="socshare">
-	                <p class="sharepost"> <span class="sharepost">Поделиться с друзьями:</span>
-
-	                    <a class="nav-soc" href="#"> <i class="fab fa-facebook-square fa-2x"></i></a>
-
-
-	                    <a class="nav-soc" href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
-
-	                    <a class="nav-soc" href="#"><i class="fab fa-vk fa-2x"></i></a>
-
-	                    <a class="nav-soc" href="#"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
-
-	                    <a class="nav-soc" href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
-
-	            </div>
-
-            </div>
-            <div class="col-md-4 mb-4 post-back offset-lg-8">
-                <%= link_to 'Назад к разделу', discounts_path, class: "kz-btn btn-back form-control"%>
-            </div>
-            <div class="something align-content-center">
-                <p class="sometext">Что то здесь</p>
-            </div>
+<h1><%=@event.name%></h1>
+<div class="tiding"> 	<%# Класс поменяй %>
+    <div class="row offer_bloks">
+        <%= render @places %>
+    </div>
+</div>
