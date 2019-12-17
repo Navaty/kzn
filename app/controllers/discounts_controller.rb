@@ -1,6 +1,7 @@
 class DiscountsController < ApplicationController
+	layout :resolve_layout
 	def index
-		@discounts = Discount.order('active DESC')
+		@discounts = Discount.order('id DESC')
 	end
 
 	def show
@@ -49,5 +50,17 @@ class DiscountsController < ApplicationController
     def discount_params
       params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, {images: []})
     end
+
+
+    def resolve_layout
+	    case action_name
+	    when "index"
+	      "catalog"
+	    when "show" , "new", "create", "edit", "update"
+	      "article"
+	    else
+	      "application"
+	    end
+	end
 
 end

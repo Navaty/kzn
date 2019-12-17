@@ -1,7 +1,7 @@
-<%= render 'shared/breadcrumb', sale: @discount.sale %> <br>
-
-<h1><%= @discount.title %> </h1>
+<%# render 'shared/breadcrumb', sale: @discount.sale %>
 <%= link_to 'Редактировать', edit_discount_path(@discount) %>
+<h1><%= @discount.title %> </h1>
+
 
 <%if @discount.images.any? %>
             <div id="carousel-thumb" class="carousel posts-carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
