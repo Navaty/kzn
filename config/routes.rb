@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   resources :events
   resources :places
   
-  get 'moder/' => 'discounts#moder'
+  get 'moder/' => 'wellcome#show'
+    get'moder/discounts/' => 'discounts#moder'
+    get'moder/posts/' => 'posts#moder'
+    get'moder/places/' => 'places#moder'
+
+resources :sliders
+  #get 'slider/' => 'sliders#edit'
 
 end

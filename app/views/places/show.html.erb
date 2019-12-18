@@ -34,7 +34,7 @@
         </div>
         <% end %>
             <div class="posttext">
-	            <span class="posttime">Срок действия: <%= @place.end_time %></span>
+	            <span class="posttime">Дата проведения: <%= @place.start_time.strftime("%e.%m.%Y") %> по <%= @place.end_time.strftime("%e.%m.%Y") %></span>
 	            <p></p>
 	            <span class="posttime">Адрес: <%= @place.adress %></span>
 	            <p></p>

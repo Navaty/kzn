@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+	layout :resolve_layout
 	def index
-		@posts = Post.all
+		@posts = Post.active
 	end
 
 	def show
@@ -49,5 +50,15 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :tiding_id , :active, {images: []})
     end
+    def resolve_layout
+	    case action_name
+	    when "index"
+	      "catalog"
+	    when "show" , "new", "create", "edit", "update"
+	      "article"
+	    else
+	      "application"
+	    end
+	end
 
 end

@@ -1,0 +1,23 @@
+<%# render 'shared/breadcrumb', sale: @slider.sale %>
+<%= link_to 'Редактировать', edit_slider_path(@slider) %>
+<h1><%= @slider.title %> </h1>
+
+
+<%if @slider.image %>
+		<div>
+	            	<%= image_tag @slider.image_url %>
+        </div>
+        <% end %>
+            <div class="posttext">
+	            <span class="posttime">Позиция: <%= @slider.position %></span>
+	            <p></p>
+	            <span class="posttime">Адрес: <%= @slider.url %></span>
+	            <p></p>
+	            <div class="postdesc">
+	                <h4>Описание</h4>
+	                <%= @slider.description %>
+	            </div>
+            </div>
+            <div class="col-md-4 mb-4 post-back offset-lg-8">
+                <%= link_to 'Назад', sliders_path, class: "kz-btn btn-back form-control"%>
+            </div>

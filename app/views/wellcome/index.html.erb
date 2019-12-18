@@ -16,6 +16,7 @@
                                 </a>
                             </div>
                         <% end %>
+                      </div>
                     <a href="./catigories.html" class="d-sm-block d-md-none sm-more kz-btn btn-back form-control">Посмотреть всё</a>
                     <div class="d-md-none see-more">
                         <h4>Смотри также</h4>
@@ -48,4 +49,63 @@
                                 </div>
                         <% end %>  
                     </div>
-            </div>
+</div>
+<div class="place"> <%# Переименуй discount в place %>
+    <h2 class="titcat">Куда пойти?</h2>
+    <div class="row offer_bloks">
+            <% 3.times do |i| %>
+                <div class="col-md-4 col-sm-12 offer_bloks_el">
+                  <% if @places[i] %>
+                   <% discount = @places[i] %>
+                    <a href=<%= discount_path(discount) %>>
+                          <%= if discount.images.any? 
+                            image_tag discount.images_urls[0], class: "offers_elem img-fluid"
+                            end %>
+                          <div class="offers_elem_text">
+                           <%= discount.title %>
+                          </div>
+                    </a>
+                </div>
+            <% end %>
+            <% end %>
+    </div>
+
+    <a href="./catigories.html" class="d-sm-block d-md-none sm-more kz-btn btn-back form-control">Посмотреть всё</a>
+    <div class="d-md-none see-more">
+        <h4>Смотри также</h4>
+        <div class="row offer_bloks flex-nowrap">
+            <% (3...9).each do |i| %>
+                  <div class="col-5 offer_bloks_el">
+                    <% if @places[i] %>
+                       <% discount = @places[i] %>
+                        <a href=<%= discount_path(discount) %>>
+                              <%= if discount.images.any? 
+                                image_tag discount.images_urls[0], class: "offers_elem"
+                                end %>
+                               <%= discount.title %>
+                        </a>
+                    </div>
+            <% end %>  
+            <% end %>
+        </div>
+    </div>
+
+    <div class="row d-none d-md-flex offer_bloks">
+        <% (3...9).each do |i| %>
+                 <div class="col-md-4 col-sm-12 offer_bloks_el">
+                  <% if @places[i] %>
+                       <% discount = @places[i] %>
+                        <a href=<%= discount_path(discount) %>>
+                              <%= if discount.images.any? 
+                                image_tag discount.images_urls[0], class: "offers_elem"
+                                end %>
+                              <div class="offers_elem_text">
+                               <%= discount.title %>
+                              </div>
+                        </a>
+                  </div>
+        <% end %>  
+        <% end %>
+    </div>
+
+</div>

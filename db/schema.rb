@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191211072823) do
+ActiveRecord::Schema.define(version: 20191218154747) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 20191211072823) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_sales_on_ancestry"
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position"
   end
 
   create_table "tidings", force: :cascade do |t|

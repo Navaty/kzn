@@ -1,0 +1,11 @@
+    <div class="col-md-4 col-sm-12 offer_bloks_el">
+      <a href=<%= slider_path(slider) %>>
+          <%= if slider.image 
+            image_tag slider.image_url, class: "offers_elem"
+            end %>
+          <div class="offers_elem_text">
+           <%= slider.title %>
+          </div>
+      </a>
+      <%= link_to 'Редактировать', edit_slider_path(slider) %>
+    </div>

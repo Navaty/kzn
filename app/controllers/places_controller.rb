@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
+	layout :resolve_layout
 	def index
-		@places = Place.all
+		@places = Place.active
 	end
 
 	def show
@@ -49,4 +50,14 @@ class PlacesController < ApplicationController
     def place_params
       params.require(:place).permit(:title, :body, :start_time, :end_time, :adress, :event_id , :active, :free, {images: []})
     end
+    def resolve_layout
+	    case action_name
+	    when "index"
+	      "catalog"
+	    when "show" , "new", "create", "edit", "update"
+	      "article"
+	    else
+	      "application"
+	    end
+	end
 end

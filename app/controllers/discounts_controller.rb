@@ -1,7 +1,7 @@
 class DiscountsController < ApplicationController
 	layout :resolve_layout
 	def index
-		@discounts = Discount.order('id DESC')
+		@discounts = Discount.active.order('id DESC')
 	end
 
 	def show
