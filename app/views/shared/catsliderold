@@ -1,6 +1,6 @@
 <div class="container slider d-none d-md-block adws">
     <!--Carousel Wrapper-->
-    <div id="carousel-example-2" class="carousel news-carousel slide carousel-fade" data-ride="carousel">
+     <div id="carousel-example-2" class="carousel news-carousel slide carousel-fade" data-ride="carousel">
         <!--Indicators-->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
@@ -34,7 +34,8 @@
             </div>
             <div class="carousel-item">
                 <!--Mask color-->
-                <div class="view">
+                <a href="/sales/">
+                    <div class="view">
                     <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
                          alt="Third slide">
                     <div class="mask rgba-black-slight"></div>
@@ -43,6 +44,7 @@
                     <h3 class="h3-responsive">Slight mask</h3>
                     <p>Third text</p>
                 </div>
+            </a>
             </div>
         </div>
         <!--/.Slides-->
@@ -57,5 +59,6 @@
         </a>
         <!--/.Controls-->
     </div>
+    <!--/.Carousel Wrapper-->
     <!--/.Carousel Wrapper-->
 </div>
