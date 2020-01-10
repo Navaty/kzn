@@ -2,9 +2,10 @@
         <div class="col-lg-2 col-5 col-md-4 offset-lg-5">
             <button class="kz-btn dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сортировать</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">По названию</a>
-                <a class="dropdown-item" href="#">По дате</a>
-                <a class="dropdown-item" href="#">Как угодно</a>
+                <%= link_to "По названию А-Я", params.merge(:order => "title ASC").permit(:utf8, :search, :type, :commit, :page, :order), class: 'dropdown-item' %>
+                <%= link_to "По названию Я-А", params.merge(:order => "title DESC").permit(:utf8, :search, :type, :commit, :page, :order), class: 'dropdown-item' %>
+                <%= link_to "По дате ↑", params.merge(:order => "updated_at ASC").permit(:utf8, :search, :type, :commit, :page, :order), class: 'dropdown-item' %>
+                <%= link_to "По дате ↓", params.merge(:order => "updated_at DESC").permit(:utf8, :search, :type, :commit, :page, :order), class: 'dropdown-item' %>
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-5 offset-2 offset-md-4 offset-lg-0">

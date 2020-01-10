@@ -1,19 +1,20 @@
 <div class="container search">
-    <form class="form-group search-form" action="">
+    <%= form_tag discounts_path, :method => 'get', class: "form-group search-form" do %>
         <div class="form-row">
             <div class="col-md-6 mb-3 cats">
-            <input class="form-control" type="text" placeholder="  Поиск скидок">
-            </div>
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Поиск скидок" %>
+            </div> 
             <div class="col-md-3 mb-3 d-none d-md-block cats">
-                <select class="form-control" name="type" id="">
-            <option selected value="">Тип скидки</option>
-            <option value="скидка">Скидка</option>
-            <option value="2 за 1">2 за 1</option>
-            <option value="cahback">Кешбэк</option></select>
+                <%= select_tag :type, raw(
+                    "<option selected value=''>Тип скидки</option>
+                    <option value='1'>Скидка</option>
+                    <option value='2'>2 за 1</option>
+                    <option value='3'>Кешбэк</option></select>"), class: "form-control" %>
             </div>
             <div class="col-md-2 mb-3 cats">
-        <button class="kz-btn form-control d-none d-md-block">Поиск</button>
+                <%= submit_tag "Поиск", class: "kz-btn form-control d-none d-md-block search-btn-tag" %>
             </div>
         </div>
-    </form>
+<% end%>
 </div>
+

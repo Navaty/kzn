@@ -227,10 +227,10 @@ a.dropcat{
 
 }
 
-.search-form button{
+.search-btn-tag{
     background: #C55819;
     border-color: #C55819;
-    border-radius: 10px;
+    border-radius: 10px!important;
     color:#fff;
 }
 .search{
@@ -253,6 +253,17 @@ a.dropcat{
     margin-top: 50px;
     margin-bottom: 27px;
 }
+@media (max-width: 480px){
+    .paginator li{
+      display: none
+  }
+      .paginator .pag-arr, .paginator .paginator-item-active{
+        display: inline
+    }
+  }
+}
+
+
 .paginator-item{
     margin-right: 1rem!important;
     border: 1px solid #FFFFFF;

@@ -1,7 +1,21 @@
 class DiscountsController < ApplicationController
 	layout :resolve_layout
 	def index
-		@discounts = Discount.active.order('id DESC')
+		#Перекинь в модель
+		if params[:type].present?
+			@discounts = Discount.active.where("title LIKE ? AND offer LIKE ?","%#{params[:search]}%", "#{params[:type]}").page(params[:page])
+		elsif params[:search]
+			@discounts = Discount.active.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
+		else
+			@discounts = Discount.active.page(params[:page])
+		end
+		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
+		if params[:order]
+			@discounts.order!(params[:order])
+		else
+			@discounts.order!('id DESC')
+		end
+		@custom_paginate_renderer = custom_paginate_renderer
 	end
 
 	def show

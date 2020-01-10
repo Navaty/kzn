@@ -1,10 +1,17 @@
 			<%# render 'shared/catslider' %> 
 			<%# render 'shared/catnav' %> 
 			<%# render 'shared/src' %> 
+
+			
+
 <div class="sale">
     <div class="row offer_bloks">
 
  <%= render @discounts %>
 </div>
 </div>
-
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @discounts, renderer: @custom_paginate_renderer %>
+	</nav>
+</div>
