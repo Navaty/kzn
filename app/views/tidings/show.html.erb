@@ -1,9 +1,13 @@
 <% content_for :title, @posts.name %>
 <% content_for :type, 'posts' %>
 
-<h1><%=@tiding.name%></h1>
 <div class="tiding">
     <div class="row offer_bloks">
         <%= render @posts %>
     </div>
+</div>
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @posts, renderer: @custom_paginate_renderer %>
+	</nav>
 </div>
