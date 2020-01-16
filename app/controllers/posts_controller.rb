@@ -1,7 +1,21 @@
 class PostsController < ApplicationController
 	layout :resolve_layout
 	def index
-		@posts = Post.active
+		if params[:search]
+			@posts = Post.active.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
+		else
+			@posts = Post.active.page(params[:page])
+		end
+		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
+		if params[:order]
+			@posts.order!(params[:order])
+		else
+			@posts.order!('title')
+			#@posts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+		end
+		@custom_paginate_renderer = custom_paginate_renderer
+
+		
 	end
 
 	def show
@@ -53,7 +67,7 @@ class PostsController < ApplicationController
     def resolve_layout
 	    case action_name
 	    when "index"
-	      "catalog"
+	      "catalog_posts"
 	    when "show" , "new", "create", "edit", "update"
 	      "article"
 	    else

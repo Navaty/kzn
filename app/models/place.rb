@@ -4,4 +4,6 @@ class Place < ApplicationRecord
   belongs_to :event
   scope :active, -> {where(active: true)}
   scope :disactive, -> {where(active: false)}
+
+  self.per_page = 4
 end

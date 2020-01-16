@@ -7,153 +7,101 @@
         </ol>
     </nav>
     <button class="navbar-toggler d-sm-block d-lg-none sm-more kz-btn btn-back form-control" type="button" data-toggle="collapse" data-target="#catnav" aria-controls="catnav" aria-expanded="false" aria-label="Toggle navigation">
-        Косметология
+                <%= name.blank? ? "Категория" : name %>
     </button>
-    <h1 class="d-none">Косметология</h1>
+    <% if type == 'discounts' %>
     <ul class="cat-groups d-none d-lg-block list-inline">
-        <li class="list-inline-item dropdown">
+        <% Sale.roots.each do |sale| %>
+        <li class="list-inline-item nav-item dropdown">
             <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style="display: block">На день рождения</span>
+                <span style="display: block"><%=sale.name %></span>
                 <%= image_tag 'catarrow', size: '27x9' %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+            	<%= link_to 'Посмотреть все', sale, class:"dropdown-item" %>
+            	<div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
             </div>
         </li>
-        <li class="nav-item dropdown list-inline-item">
-            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style="display: block">Горячие предложения</span>
-                <%= image_tag 'catarrow', size: '27x9' %>
-                
-
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown list-inline-item">
-            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style="display: block">Интересные места</span>
-                <%= image_tag 'catarrow', size: '27x9' %>
-
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-
-            </div>
-        </li>
-        <li class="nav-item dropdown list-inline-item">
-            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span style="display: block">Интересно почитать</span>
-                <%= image_tag 'catarrow', size: '27x9' %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item list-inline-item">
-            <a class="nav-link dropcat" href="#">
-                <span style="display: block"> Сотрудничество</span>
-                <%= image_tag 'catarrow', size: '27x9' %>
-            </a>
-        </li>
+        <% end %>
     </ul>
     <div class="collapse cat-groups-mob" id="catnav">
-        <li class="dropdown">
-                <b>На день рождения</b>
-            <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-        </li>
+        <% Sale.roots.each do |sale| %>
         <li class="nav-item dropdown">
-
-            <b>Горячие предложения</b>
+                <b><%= sale.name %></b>
             <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-        </li>
-        <li class="nav-item dropdown ">
-                <b>Интересные места</b>
-            <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-
-        </li>
-        <li class="nav-item dropdown ">
-
-                <b>Интересно почитать</b>
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-        </li>
-        <li class="nav-item ">
-                <b> Сотрудничество</b>
+            	<% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+                <% end %>
         </li>
     </div>
+    <% end %>
+
+
+<% if type == 'places' %>
+    <ul class="cat-groups d-none d-lg-block list-inline">
+        <% Event.roots.each do |sale| %>
+        <li class="list-inline-item nav-item dropdown">
+            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="display: block"><%=sale.name %></span>
+                <%= image_tag 'catarrow', size: '27x9' %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Посмотреть все', sale, class:"dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+            </div>
+        </li>
+        <% end %>
+    </ul>
+    <div class="collapse cat-groups-mob" id="catnav">
+        <% Event.roots.each do |sale| %>
+        <li class="nav-item dropdown">
+                <b><%= sale.name %></b>
+            <div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+                <% end %>
+        </li>
+    </div>
+    <% end %>
+
+
+<% if type == 'posts' %>
+    <ul class="cat-groups d-none d-lg-block list-inline">
+        <% Tiding.roots.each do |sale| %>
+        <li class="list-inline-item nav-item dropdown">
+            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="display: block"><%=sale.name %></span>
+                <%= image_tag 'catarrow', size: '27x9' %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Посмотреть все', sale, class:"dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+            </div>
+        </li>
+        <% end %>
+    </ul>
+    <div class="collapse cat-groups-mob" id="catnav">
+        <% Tiding.roots.each do |sale| %>
+        <li class="nav-item dropdown">
+                <b><%= sale.name %></b>
+            <div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+                <% end %>
+        </li>
+    </div>
+    <% end %>
+
 </div>

@@ -1,8 +1,12 @@
-<h1>Места</h1>
+<% content_for :type, 'places' %>
 <div class="sale">
     <div class="row offer_bloks">
 
  <%= render @places %>
 </div>
 </div>
-
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @places, renderer: @custom_paginate_renderer %>
+	</nav>
+</div>

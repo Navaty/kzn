@@ -1,8 +1,13 @@
-<%= render 'shared/breadcrumb', sale: @sale %>
+<% content_for :title, @sale.name %>
+<% content_for :type, 'discounts' %>
 
-<h1><%=@sale.name%></h1>
 <div class="sale">
     <div class="row offer_bloks">
         <%= render @discounts %>
     </div>
+</div>
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @discounts, renderer: @custom_paginate_renderer %>
+	</nav>
 </div>

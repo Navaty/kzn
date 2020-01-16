@@ -1,3 +1,4 @@
+<% content_for :type, 'posts' %>
 <h1>Новости</h1>
 <div class="sale">
     <div class="row offer_bloks">
@@ -6,3 +7,8 @@
 </div>
 </div>
 
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @posts, renderer: @custom_paginate_renderer %>
+	</nav>
+</div>

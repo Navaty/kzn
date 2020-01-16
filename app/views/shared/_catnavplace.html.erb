@@ -1,0 +1,40 @@
+<div class="container catnav">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            <li class="breadcrumb-item"><a href="#">Красота</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Косметология</li>
+        </ol>
+    </nav>
+    <button class="navbar-toggler d-sm-block d-lg-none sm-more kz-btn btn-back form-control" type="button" data-toggle="collapse" data-target="#catnav" aria-controls="catnav" aria-expanded="false" aria-label="Toggle navigation">
+                <%= name.blank? ? "Категория" : name %>
+    </button>
+    <ul class="cat-groups d-none d-lg-block list-inline">
+        <% Event.roots.each do |sale| %>
+        <li class="list-inline-item nav-item dropdown">
+            <a class="nav-link dropcat" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="display: block"><%=sale.name %></span>
+                <%= image_tag 'catarrow', size: '27x9' %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            	<%= link_to 'Посмотреть все', sale, class:"dropdown-item" %>
+            	<div class="dropdown-divider"></div>
+                <% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+            </div>
+        </li>
+        <% end %>
+    </ul>
+    <div class="collapse cat-groups-mob" id="catnav">
+        <% Event.roots.each do |sale| %>
+        <li class="nav-item dropdown">
+                <b><%= sale.name %></b>
+            <div class="dropdown-divider"></div>
+            	<% sale.descendants.each do |children| %>
+                <%= link_to children.name, children, class:"dropdown-item" %>
+                <% end %>
+                <% end %>
+        </li>
+    </div>
+</div>

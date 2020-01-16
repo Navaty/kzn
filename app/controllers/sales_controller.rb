@@ -15,7 +15,15 @@ class SalesController < ApplicationController
 	end
 	def show
 		@sale = Sale.find(params[:id])
-		@discounts = Discount.where(sale_id: [@sale.subtree_ids]).active #ancestry need to optimized
+		@discounts = Discount.where(sale_id: [@sale.subtree_ids]).active.page(params[:page]) #ancestry need to optimized
+			#Исправь обязательно! Сделай нормально без дырок в инъекцию.
+		if params[:order]
+			@discounts.order!(params[:order])
+		else
+			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+		end
+		@custom_paginate_renderer = custom_paginate_renderer
+		render layout: "catalog"
 
 	end
 	def edit

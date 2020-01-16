@@ -1,4 +1,5 @@
-<%= render 'shared/breadcrumb', sale: @post.tiding %> <br>
+<% content_for :title, @post.tiding.name %>
+<% content_for :type, 'posts' %>
 
 <h1><%= @post.title %> </h1>
 <%= link_to 'Редактировать', edit_post_path(@post) %>

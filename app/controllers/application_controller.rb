@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
 
 	  def previous_page
 	    num = @collection.current_page > 1 && @collection.current_page - 1
-	    previous_or_next_page(num, "<img src=\"assets/paginatorprev.svg\">")
+	    previous_or_next_page(num, "<img src=\"/assets/paginatorprev.svg\">")
 	  end
 
 	  def next_page
 	    num = @collection.current_page < total_pages && @collection.current_page + 1
-	    previous_or_next_page(num, "<i class=\"\"><img src=\"assets/paginatornext.svg\"></i>")
+	    previous_or_next_page(num, "<i class=\"\"><img src=\"/assets/paginatornext.svg\"></i>")
 	  end
 
 	  def previous_or_next_page(page, text)

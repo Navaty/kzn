@@ -3,7 +3,7 @@
   <head>
     <title>Kzn</title>
     <%= csrf_meta_tags %>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
@@ -58,12 +58,13 @@
 	    </nav>
 	</div>
 			<%= render 'shared/catslider' %> 
-			<%# render 'shared/catnav' %> 
-			<%# render 'shared/src' %> 
-	<div class="container main conpost">
+			<%= render :partial => 'shared/catnav', :locals => {:name => yield(:title), :type => yield(:type)} %> 
+			<%= render 'shared/src_place' %> 
+	<div class="container main">
+		<%= render 'shared/sort' %>
 	    <div class="row">
 
-	        <div class="col-lg-9 col-md-12 offers">           
+	        <div class="col-lg-9 col-md-12 offers offer-cat">           
 				<%= yield %>
 			</div>
 	        <div class="col-lg-3 d-none d-lg-block adws-post">

@@ -1,4 +1,5 @@
-<%= render 'shared/breadcrumb', sale: @tiding %>
+<% content_for :title, @posts.name %>
+<% content_for :type, 'posts' %>
 
 <h1><%=@tiding.name%></h1>
 <div class="tiding">

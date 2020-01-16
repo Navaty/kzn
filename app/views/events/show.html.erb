@@ -1,6 +1,6 @@
-<%= render 'shared/breadcrumb', sale: @event %>
+<% content_for :title, @places.name %>
+<% content_for :type, 'places' %>
 
-<h1><%=@event.name%></h1>
 <div class="tiding"> 	<%# Класс поменяй %>
     <div class="row offer_bloks">
         <%= render @places %>

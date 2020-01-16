@@ -13,7 +13,7 @@ class DiscountsController < ApplicationController
 		if params[:order]
 			@discounts.order!(params[:order])
 		else
-			@discounts.order!('id DESC')
+			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 	end
@@ -62,7 +62,7 @@ class DiscountsController < ApplicationController
 
 	private
     def discount_params
-      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, {images: []})
+      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, :adwpos, {images: []})
     end
 
 
