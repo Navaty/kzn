@@ -12,8 +12,8 @@ class PlacesController < ApplicationController
 		if params[:order]
 			@places.order!(params[:order])
 		else
-			@places.order!('title')
-			#@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			#@places.order!('title')
+			@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 
@@ -64,7 +64,7 @@ class PlacesController < ApplicationController
 
 	private
     def place_params
-      params.require(:place).permit(:title, :body, :start_time, :end_time, :adress, :event_id , :active, :free, {images: []})
+      params.require(:place).permit(:title, :body, :start_time, :end_time, :adress, :event_id , :active, :free, :adwpos, {images: []})
     end
     def resolve_layout
 	    case action_name

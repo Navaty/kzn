@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 		if params[:order]
 			@posts.order!(params[:order])
 		else
-			@posts.order!('title')
-			#@posts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			#@posts.order!('title')
+			@posts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
 	private
     def post_params
-      params.require(:post).permit(:title, :body, :tiding_id , :active, {images: []})
+      params.require(:post).permit(:title, :body, :tiding_id , :active, :adwpos, {images: []})
     end
     def resolve_layout
 	    case action_name

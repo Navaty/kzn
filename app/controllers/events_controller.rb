@@ -19,8 +19,8 @@ class EventsController < ApplicationController
 		if params[:order]
 			@places.order!(params[:order])
 		else
-			@places.order!('title')
-			#@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			#@places.order!('title')
+			@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 		render layout: "catalog_place" #ancestry need to optimized
