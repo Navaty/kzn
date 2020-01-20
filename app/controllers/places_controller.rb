@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
 	layout :resolve_layout
 	def index
-		if params[:type].present?
-			@places = Place.active.where("title LIKE ? AND free LIKE ?","%#{params[:search]}%", "#{params[:type]}").page(params[:page])
+		if params[:free]
+			@places = Place.active.where("title LIKE ? AND free = 't'","%#{params[:search]}%").page(params[:page])
 		elsif params[:search]
 			@places = Place.active.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
 		else
