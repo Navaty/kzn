@@ -2,7 +2,9 @@
 <% content_for :type, 'places' %>
 
 <h1><%= @place.title %> </h1>
-<%= link_to 'Редактировать', edit_place_path(@place) %>
+ <% if user_signed_in? %>
+<%= link_to 'Редактировать', edit_admin_place_path(@place) %>
+<% end %>
 
 <%if @place.images.any? %>
             <div id="carousel-thumb" class="carousel posts-carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">

@@ -2,7 +2,9 @@
 <% content_for :type, 'posts' %>
 
 <h1><%= @post.title %> </h1>
-<%= link_to 'Редактировать', edit_post_path(@post) %>
+ <% if user_signed_in? %>
+<%= link_to 'Редактировать', edit_admin_post_path(@post) %>
+<% end %>
 <%if @post.images.any? %>
             <div id="carousel-thumb" class="carousel posts-carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
             <!--Slides-->

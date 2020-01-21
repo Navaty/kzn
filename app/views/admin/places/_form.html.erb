@@ -1,0 +1,77 @@
+<%= form_with(model: [:admin, @place], local: true) do |form| %>
+<% if place.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% place.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.cktext_area :body, id: :place_body %>
+  </div>
+    <div>
+    <%= form.label :start_time %><br>
+    <%= form.date_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :end_time %><br>
+    <%= form.date_field :end_time %>
+  </div>
+  <div>
+    <%= form.label :adress %><br>
+    <%= form.text_field :adress %>
+  </div>
+  <div>
+    <%= form.label :Категория %><br>
+    <%= form.collection_select :event_id, Event.order(:name), :id, :name, :promt =>"Select one" %>
+  </div>
+  <div>
+    <%= form.label :images %>
+    <div class="image-sortable">
+      <% place.images.each do |image| %>
+        <div class="image">
+          <%= hidden_field :place, :images, multiple: true, value:  image.cache_name || image.identifier %>
+          <%= image_tag(image.url, height: 50) %>
+          <button type="button" class="remove-image">Удалить</button>
+        </div>
+      <% end %>
+      <div class="image">
+        <%= form.file_field :images, multiple: true %>
+      </div>
+    </div>
+  </div>
+
+ <div>
+    <%= form.label :free %><br>
+    <%= form.check_box :free %>
+  </div>
+
+    <div>
+    <%= form.label :active %><br>
+    <%= form.check_box :active %>
+  </div>
+       <div>
+    <%= form.label :adwpos %><br>
+    <%= form.number_field :adwpos %>
+  </div>
+
+  
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', places_path %>

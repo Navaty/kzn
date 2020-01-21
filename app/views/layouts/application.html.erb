@@ -56,11 +56,28 @@
 	            </div>
 	        </div>
 	    </nav>
+	    <% if user_signed_in? %> 
+	    	<%= current_user.email %>
+        	<%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+        <% else %>
+            <a href=" <%= new_user_session_path %> ">Войти</a>
+        <% end %>
 	</div>
 			<%= render 'shared/catslider' %> 
 			<%# render 'shared/catnav' %> 
 			<%# render 'shared/src' %> 
+
 	<div class="container main conpost">
+		<div class="row">
+			<div class="col-md-12">
+				<% flash.each do |name, message| %>
+					<div class="alert alert-<%= name %>">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<%= message %>
+					</div>	
+				<%end %>
+			</div>
+		</div>
 	    <div class="row">
 
 	        <div class="col-lg-9 col-md-12 offers">           
@@ -151,23 +168,21 @@
 	            <div class="col-md-3 fotnav">
 
 	                <!-- Links -->
+
 	                <h5 class="font-weight-bold fzagnav text-uppercase mt-3 mb-2">СКИДКИ</h5>
 
 	                <ul class="list-unstyled text-white">
+	                	<% if user_signed_in? %> 
 	                    <li>
-	                        <a href="#!">На день рождения 1</a>
+	                    	<%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
 	                    </li>
+	                    <% else %>
 	                    <li>
-	                        <a href="#!">Горячие предложения 2</a>
+	                        <a href=" <%= new_user_session_path %> ">Войти</a>
 	                    </li>
+	                    <% end %>
 	                    <li>
-	                        <a href="#!">Уникальные 3</a>
-	                    </li>
-	                    <li>
-	                        <a href="#!">Красота 4</a>
-	                    </li>
-	                    <li>
-	                        <a href="#!">Популярное</a>
+	                        <a href=" <%= new_user_registration_path %> ">Регистрация</a>
 	                    </li>
 	                </ul>
 

@@ -1,0 +1,30 @@
+<%= form_with(model: [:admin, @event], local: true) do |form| %>
+<% if event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(event.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :Родитель %><br>
+    <%= form.collection_select :parent_id, Event.order(:name), :id, :name, {include_blank: true } %> <%# where("id != #{@sale.id}") %>
+  </div>
+  
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', admin_events_path %>

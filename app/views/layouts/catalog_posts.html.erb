@@ -56,6 +56,11 @@
 	            </div>
 	        </div>
 	    </nav>
+	    <% if user_signed_in? %> 
+        	<%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+        <% else %>
+            <a href=" <%= new_user_session_path %> ">Войти</a>
+        <% end %>
 	</div>
 			<%= render 'shared/catslider' %> 
 			<%= render :partial => 'shared/catnav', :locals => {:name => yield(:title), :type => yield(:type)} %> 

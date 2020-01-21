@@ -1,20 +1,33 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'wellcome#index'
-  resources :sales
-  resources :discounts
-  resources :tidings
-  resources :posts
-  resources :events
-  resources :places
+  resources :sales, only: [:show]
+  resources :discounts, only: [:show, :index]
+  resources :tidings, only: [:show]
+  resources :posts, only: [:show, :index]
+  resources :events, only: [:show]
+  resources :places, only: [:show, :index]
   
-  get 'moder/' => 'wellcome#show'
-    get'moder/discounts/' => 'discounts#moder'
-    get'moder/posts/' => 'posts#moder'
-    get'moder/places/' => 'places#moder'
+  namespace :admin do
+    resources :sales, except: [:show]
+    resources :discounts, except: [:show, :index]
+    resources :tidings, except: [:show]
+    resources :posts, except: [:show, :index]
+    resources :events, except: [:show]
+    resources :places, except: [:show, :index]
 
-resources :sliders
+
+    resources :sliders
+  end
+
+  #get 'moder/' => 'wellcome#show'
+   # get'moder/discounts/' => 'discounts#moder'
+   # get'moder/posts/' => 'posts#moder'
+    #get'moder/places/' => 'places#moder'
+
+
   #get 'slider/' => 'sliders#edit'
 
 end

@@ -7,5 +7,10 @@
            <%= discount.title %>
           </div>
       </a>
-      <%= link_to 'Редактировать', edit_discount_path(discount) %>
+      <% if user_signed_in? %>
+      <%= link_to 'Редактировать', edit_admin_discount_path(discount) %> 
+        <% if current_user.admin? %> |
+          <%= link_to 'Удалить', admin_discount_path(discount),  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
+        <% end %>
+      <% end %>
     </div>

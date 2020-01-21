@@ -1,8 +1,10 @@
 <%# render 'shared/breadcrumb', sale: @discount.sale %>
 <% content_for :title, @discount.sale.name %>
 <% content_for :type, 'discounts' %>
-
-<%= link_to 'Редактировать', edit_discount_path(@discount) %>
+<% if user_signed_in? %>
+<%= link_to 'Редактировать', edit_admin_discount_path(@discount) %> |
+<%= link_to 'Удалить', admin_discount_path,  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
+<% end %>
 <h1><%= @discount.title %> </h1>
 
 

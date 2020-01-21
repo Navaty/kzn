@@ -1,0 +1,9 @@
+   		<tr>
+          <td><%= event.id %></td>
+          <td><%= event.name %></td>
+          <td><%= event.parent.name if event.parent.present? %></td>
+          <td>
+            <%= link_to 'Изменить', edit_admin_event_path(event), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Удалить', admin_event_path(event), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+          </td>
+        </tr>

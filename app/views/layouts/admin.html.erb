@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Kzn</title>
+	    <%= csrf_meta_tags %>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	    <%= javascript_include_tag Ckeditor.cdn_url %>
+	        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	    <link href="https://fonts.googleapis.com/css?family=Rubik|Share+Tech&amp;subset=cyrillic" rel="stylesheet">
+	</head>
+
+  <body>
+  	<div class="container sticky-top">
+	    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top nav-admin">
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	        <%= link_to image_tag("logo.png", size: 80), root_path, class: "navbar-left" %>
+
+	        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	                 <li class="nav-item">
+	                    <a class="nav-link nav-sim" href="#">
+	                        Админка
+	                    </a>
+	                </li>
+	                 <li class="nav-item">
+	                    <%= link_to "Слайдер", admin_sliders_path, class: "nav-link nav-sim" %>
+	                        
+	                </li>
+	                 <li class="nav-item">
+	                    <%= link_to "Скидки", admin_sales_path, class: "nav-link nav-simz" %>
+	                </li>
+	                 <li class="nav-item">
+	                    <%= link_to "Новости", admin_tidings_path, class: "nav-link nav-sim" %>
+	                </li>
+	                <li class="nav-item">
+	                    <%= link_to "Места", admin_events_path, class: "nav-link nav-sim" %>
+	                </li>
+	                <li class="nav-item">
+	                    <%= link_to "Корзина скидок", admin_events_path, class: "nav-link nav-sim" %>
+	                </li>
+	                 <li class="nav-item">
+	                    <%= link_to "Корзина новостей", admin_events_path, class: "nav-link nav-sim" %>
+	                </li>
+	                 <li class="nav-item">
+	                    <%= link_to "Корзина мест", admin_events_path, class: "nav-link nav-sim" %>
+	                </li>
+
+	            </ul>
+	            <div class="soc-bt d-none d-xl-block">
+	            	<% if user_signed_in? %> 
+	    	<%= current_user.email %>
+        	<%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+        <% else %>
+            <a href=" <%= new_user_session_path %> ">Войти</a>
+        <% end %>
+	            </div>
+	        </div>
+	    </nav>
+	</div>
+			<%= render 'shared/catslider' %> 
+			<%# render 'shared/catnav' %> 
+			<%# render 'shared/src' %> 
+
+	<div class="container main conpost">
+		<div class="row">
+			<div class="col-md-12">
+				<% flash.each do |name, message| %>
+					<div class="alert alert-<%= name %>">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<%= message %>
+					</div>	
+				<%end %>
+			</div>
+		</div>
+	    <div class="row">
+
+	        <div class="col-lg-9 col-md-12 offers">           
+				<%= yield %>
+			</div>
+	        <div class="col-lg-3 d-none d-lg-block adws-post">
+
+	        </div>
+	    </div>
+	</div>
+    <footer class="kaz-footer">
+    <!-- Footer Links -->
+	    <div class="container text-center text-md-left">
+
+	        <!-- Grid row -->
+	        <div class="row justify-content-center">
+
+	            <!-- Grid column -->
+	            <div class="col-lg-2 col-md-3 fotnav">
+
+	                <!-- Links -->
+	                <h5 class="font-weight-bold fzagnav text-uppercase mt-3 mb-2">kazanlike</h5>
+
+	                <ul class="list-unstyled">
+	                    <li>
+	                        <a href="#!">О проекте</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Контакты</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Партнерам</a>
+	                    </li>
+	                </ul>
+
+	            </div>
+	            <!-- Grid column -->
+
+
+	            <!-- Grid column -->
+	            <div class="col-lg-2 col-md-3 fotnav">
+
+	                <!-- Links -->
+	                <h5 class="font-weight-bold fzagnav text-uppercase mt-3 mb-2">новости</h5>
+
+	                <ul class="list-unstyled">
+	                    <li>
+	                        <a href="#!">Самое свежее</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Популярное</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Интересное</a>
+	                    </li>
+	                </ul>
+
+	            </div>
+	            <!-- Grid column -->
+
+
+	            <!-- Grid column -->
+	            <div class="col-md-3 col-lg-2 fotnav">
+
+	                <!-- Links -->
+	                <h5 class="font-weight-bold fzagnav text-uppercase mt-3 mb-2">МЕСТА</h5>
+
+	                <ul class="list-unstyled">
+	                    <li>
+	                        <a href="#!">Мероприятия 1</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Рестораны 2</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Культура 3</a>
+	                    </li>
+	                    <li>
+	                        <a href="#!">Театр и кино 4</a>
+	                    </li>
+	                </ul>
+
+	            </div>
+	            <!-- Grid column -->
+
+
+	            <!-- Grid column -->
+	            <div class="col-md-3 fotnav">
+
+	                <!-- Links -->
+
+	                <h5 class="font-weight-bold fzagnav text-uppercase mt-3 mb-2">СКИДКИ</h5>
+
+	                <ul class="list-unstyled text-white">
+	                	<% if user_signed_in? %> 
+	                    <li>
+	                    	<%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+	                    </li>
+	                    <% else %>
+	                    <li>
+	                        <a href=" <%= new_user_session_path %> ">Войти</a>
+	                    </li>
+	                    <% end %>
+	                    <li>
+	                        <a href=" <%= new_user_registration_path %> ">Регистрация</a>
+	                    </li>
+	                </ul>
+
+	            </div>
+	            <!-- Grid column -->
+	            <div class="col-lg-3 col-md-4 text-center flogo pb-2">
+	                <%= image_tag "logo.png", class: "rounded mx-auto d-block", alt: "kznlike" %>
+	                <div class="soc-fbt"> <span class="text-uppercase font-weight-bold">присоединяйся к нам</span> <br>
+
+	                    <i class="fab fa-facebook-square fa-2x"></i>
+	                    <i class="fab fa-google-plus-square fa-2x"></i>
+	                    <i class="fab fa-vk fa-2x"></i>
+	                    <i class="fab fa-odnoklassniki-square fa-2x"></i>
+	                    <i class="fab fa-twitter-square fa-2x"></i>
+	                </div>
+	            </div>
+
+	        </div>
+	        <!-- Grid row -->
+
+	    </div>
+	    <!-- Footer Links -->
+
+	    <!-- Copyright -->
+	    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+	        <a href="#"> Kazanlike.ru</a>
+	    </div>
+
+	</footer>
+  </body>
+</html>
