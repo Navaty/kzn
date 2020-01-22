@@ -18,7 +18,14 @@ class Admin::PlacesController < Admin::AdminController
 	end
 
 	def moder
-		@places = Place.disactive
+		if params[:free]
+			@places = Place.disactive.where("title LIKE ? AND free = 't'","%#{params[:search]}%").page(params[:page])
+		elsif params[:search]
+			@places = Place.disactive.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
+		else
+			@places = Place.disactive.page(params[:page])
+		end
+		@custom_paginate_renderer = custom_paginate_renderer
 	end
 
 	def edit
@@ -29,7 +36,7 @@ class Admin::PlacesController < Admin::AdminController
 		@place = Place.find(params[:id])
 
 		if @place.update(place_params)
-			redirect_to place_path
+			redirect_to admin_places_path
 		else
 			render 'new'
 		end
@@ -38,7 +45,7 @@ class Admin::PlacesController < Admin::AdminController
 	def destroy
 		@place = place.find(params[:id])
 		@place.destroy
-		redirect_to places_url, notice: 'Скидка удалена.'
+		redirect_to places_path, notice: 'Скидка удалена.'
 	end
 
 	private

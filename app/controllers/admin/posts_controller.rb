@@ -17,7 +17,12 @@ class Admin::PostsController < Admin::AdminController
 	end
 
 	def moder
-		@posts = Post.disactive
+		if params[:search]
+			@posts = Post.disactive.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
+		else
+			@posts = Post.disactive.page(params[:page])
+		end
+		@custom_paginate_renderer = custom_paginate_renderer
 	end
 
 	def edit
@@ -28,7 +33,7 @@ class Admin::PostsController < Admin::AdminController
 		@post = Post.find(params[:id])
 
 		if @post.update(post_params)
-			redirect_to post_path
+			redirect_to admin_posts_path
 		else
 			render 'new'
 		end
@@ -37,7 +42,7 @@ class Admin::PostsController < Admin::AdminController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to posts_url, notice: 'Скидка удалена.'
+		redirect_to posts_path, notice: 'Скидка удалена.'
 	end
 
 	private

@@ -12,19 +12,19 @@
     <% end %>
 
   <div class="form-group">
-    <%= form.label :title %><br>
+    <%= form.label :Заголовок %><br>
     <%= form.text_field :title, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :body %><br>
+    <%= form.label :Описание %><br>
     <%= form.cktext_area :body, id: :discount_body , class:"form-control"%>
   </div>
   <div class="form-group">
-    <%= form.label :end_time %><br>
+    <%= form.label :Дата_окончания %><br>
     <%= form.date_field :end_time, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :adress %><br>
+    <%= form.label :Адрес %><br>
     <%= form.text_field :adress, class:"form-control" %>
   </div>
   <div class="form-group">
@@ -32,11 +32,11 @@
     <%= form.collection_select :sale_id, Sale.order(:name), :id, :name, :promt =>"Select one", class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :offer %><br>
+    <%= form.label :Тип_предложения %><br>
     <%= form.number_field :offer, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :images %>
+    <%= form.label :Изображения %>
     <div class="image-sortable ">
       <% discount.images.each do |image| %>
         <div class="image">
@@ -52,20 +52,22 @@
         <%= form.file_field :images, multiple: true, class:"" %>
       </div>
 
-    <div class="form-group">
-    <%= form.label :active %><br>
-    <%= form.check_box :active %>
+
+  <div class=" form-group">
+    <%= form.label :Рекламная_позиция %><br>
+    <%= form.number_field :adwpos, class:"form-control" %>
   </div>
 
-     <div class=" form-group">
-    <%= form.label :adwpos %><br>
-    <%= form.number_field :adwpos, class:"form-control" %>
+    <div class="form-group">
+    <%= form.check_box :active %>
+    <%= form.label :Опубликовать %>
   </div>
 
   
 
   <div class="form-group">
-    <%= form.submit class: "btn btn-primary" %>
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
+    <%= link_to 'Назад', :back, class: "btn btn-secondary" %>
   </div>
 
 <% end %>

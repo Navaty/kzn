@@ -8,6 +8,9 @@
           </div>
       </a>
        <% if user_signed_in? %>
-      <%= link_to 'Редактировать', edit_admin_place_path(place) %>
+      <%= link_to 'Редактировать', edit_admin_place_path(place) %> 
+        <% if current_user.admin? %> |
+          <%= link_to 'Удалить', admin_place_path(place),  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
+        <% end %>
       <% end %>
     </div>

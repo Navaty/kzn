@@ -1,19 +1,18 @@
 <%= form_with(model: [:admin, @sale] , local: true) do |form| %>
 
-  <p>
+<div class="form-group">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
 
-    <p>
+<div class="form-group">
     <%= form.label :Родитель %><br>
-    <%= form.collection_select :parent_id, Sale.order(:name), :id, :name, {include_blank: true } %> <%# where("id != #{@sale.id}") %>
-  </p>
+    <%= form.collection_select :parent_id, Sale.order(:name), :id, :name, {include_blank: true }, class:"form-control" %> <%# where("id != #{@sale.id}") %>
+  </div>
 
 
-  <p>
-    <%= form.submit %>
-  </p>
+<div class="form-group">
+    <%= form.submit "Сохранить", class: "btn btn-primary"  %>
+    <%= link_to 'Назад', admin_sales_path, class: "btn btn-secondary" %>
+  </div>
 <% end %>
-
-<%= link_to 'Back', admin_sales_path %>

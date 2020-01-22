@@ -17,7 +17,16 @@ class Admin::DiscountsController < Admin::AdminController
 	end
 
 	def moder
-		@discounts = Discount.disactive
+		if params[:type].present?
+			@discounts = Discount.disactive.where("title LIKE ? AND offer LIKE ?","%#{params[:search]}%", "#{params[:type]}").page(params[:page])
+		elsif params[:search]
+			@discounts = Discount.disactive.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
+		else
+			@discounts = Discount.disactive.page(params[:page])
+		end
+		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
+
+		@custom_paginate_renderer = custom_paginate_renderer
 	end
 
 	def edit

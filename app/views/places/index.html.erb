@@ -1,4 +1,11 @@
 <% content_for :type, 'places' %>
+
+<div class="buttons_panel">
+  <%= link_to 'Новое место', new_admin_place_path, class: 'btn btn-outline-primary btn-sm'  if user_signed_in?%>
+</div>	
+
+<br>
+
 <div class="sale">
     <div class="row offer_bloks">
 

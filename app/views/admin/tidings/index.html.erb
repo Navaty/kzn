@@ -1,8 +1,22 @@
-<table>
-  <tr>
-    <th>name</th>
-    <th>Родитель</th>
-    <th colspan="2"></th>
-  </tr>
-  <%= render @tidings %>
-</table>
+<h1>Категории новостей</h1>
+<div class="buttons_panel">
+  <%= link_to 'Новая категория', new_admin_tiding_path, class: 'btn btn-outline-primary btn-sm' %> |
+  <%= link_to 'Новая новость', new_admin_post_path, class: 'btn btn-outline-primary btn-sm' %>|
+  <%= link_to 'Корзина', moder_admin_posts_path, class: 'btn btn-outline-primary btn-sm' %>
+</div>
+<br>
+<section id="sales">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Название</th>
+        <th>Категория родитель</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    	<%= render @tidings %>
+    </tbody>
+  </table>
+</section>

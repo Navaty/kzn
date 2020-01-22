@@ -13,7 +13,7 @@
 
   <body>
   	<div class="container sticky-top">
-	    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top nav-admin">
+	    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top nav-admin" style="border-color:#000000">
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
@@ -39,15 +39,6 @@
 	                <li class="nav-item">
 	                    <%= link_to "Места", admin_events_path, class: "nav-link nav-sim" %>
 	                </li>
-	                <li class="nav-item">
-	                    <%= link_to "Корзина скидок", admin_events_path, class: "nav-link nav-sim" %>
-	                </li>
-	                 <li class="nav-item">
-	                    <%= link_to "Корзина новостей", admin_events_path, class: "nav-link nav-sim" %>
-	                </li>
-	                 <li class="nav-item">
-	                    <%= link_to "Корзина мест", admin_events_path, class: "nav-link nav-sim" %>
-	                </li>
 
 	            </ul>
 	            <div class="soc-bt d-none d-xl-block">
@@ -61,7 +52,7 @@
 	        </div>
 	    </nav>
 	</div>
-			<%= render 'shared/catslider' %> 
+			<%# render 'shared/catslider' %> 
 			<%# render 'shared/catnav' %> 
 			<%# render 'shared/src' %> 
 

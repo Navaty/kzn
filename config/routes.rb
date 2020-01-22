@@ -12,14 +12,27 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :sales, except: [:show]
-    resources :discounts, except: [:show, :index]
+    resources :discounts, except: [:show, :index] do
+      collection do
+        get :moder
+      end
+    end
     resources :tidings, except: [:show]
-    resources :posts, except: [:show, :index]
+    resources :posts, except: [:show, :index]do
+      collection do
+        get :moder
+      end
+    end
     resources :events, except: [:show]
-    resources :places, except: [:show, :index]
+    resources :places, except: [:show, :index]do
+      collection do
+        get :moder
+      end
+    end
 
 
     resources :sliders
+    resources :users
   end
 
   #get 'moder/' => 'wellcome#show'

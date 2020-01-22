@@ -1,7 +1,9 @@
-    <tr>
-      <td><%= tiding.name %></td>
-      <td><%= tiding.parent.name if tiding.parent.present? %></td>
-      <td><%= link_to 'Show', tiding_path(tiding) %></td> 
-      <td><%= link_to 'Edit', edit_tiding_path(tiding) %></td> 
-      <td><%= link_to 'Destroy', tiding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+   		<tr>
+          <td><%= tiding.id %></td>
+          <td><%= tiding.name %></td>
+          <td><%= tiding.parent.name if tiding.parent.present? %></td>
+          <td>
+            <%= link_to 'Изменить', edit_admin_tiding_path(tiding), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Удалить', admin_tiding_path(tiding), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+          </td>
+        </tr>

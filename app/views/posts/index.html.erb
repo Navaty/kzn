@@ -1,4 +1,10 @@
 <% content_for :type, 'posts' %>
+<div class="buttons_panel">
+  <%= link_to 'Новая новость', new_admin_post_path, class: 'btn btn-outline-primary btn-sm'  if user_signed_in?%>
+</div>
+
+<br>
+
 <div class="sale">
     <div class="row offer_bloks">
 

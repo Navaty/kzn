@@ -1,8 +1,10 @@
 <h1>Категории скидок</h1>
 <div class="buttons_panel">
-  <%= link_to 'Новая категория', new_admin_sale_path, class: 'btn btn-outline-primary btn-sm' %>
+  <%= link_to 'Новая категория', new_admin_sale_path, class: 'btn btn-outline-primary btn-sm' %> |
+  <%= link_to 'Новая скидка', new_admin_discount_path, class: 'btn btn-outline-primary btn-sm' %> |
+  <%= link_to 'Корзина', moder_admin_discounts_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>
-
+<br>
 <section id="sales">
   <table class="table">
     <thead>
