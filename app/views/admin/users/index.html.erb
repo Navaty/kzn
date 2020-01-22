@@ -1,0 +1,21 @@
+<h1>Пользователи</h1>
+<div class="buttons_panel">
+  <%= link_to 'Новый пользователь', new_admin_user_path, class: 'btn btn-outline-primary btn-sm' %>
+</div>
+<br>
+<section id="sales">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>email</th>
+        <th>Администратор</th>
+        <th>Последний вход</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    	<%= render @users %>
+    </tbody>
+  </table>
+</section>

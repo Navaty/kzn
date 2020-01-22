@@ -17,19 +17,17 @@
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
+
 	        <%= link_to image_tag("logo.png", size: 80), root_path, class: "navbar-left" %>
 
 	        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 	            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	                 <li class="nav-item">
-	                    <a class="nav-link nav-sim" href="#">
-	                        Админка
-	                    </a>
-	                </li>
+	                <% if current_user.admin? %>
 	                 <li class="nav-item">
 	                    <%= link_to "Слайдер", admin_sliders_path, class: "nav-link nav-sim" %>
 	                        
 	                </li>
+	                <% end %>
 	                 <li class="nav-item">
 	                    <%= link_to "Скидки", admin_sales_path, class: "nav-link nav-simz" %>
 	                </li>
@@ -39,6 +37,13 @@
 	                <li class="nav-item">
 	                    <%= link_to "Места", admin_events_path, class: "nav-link nav-sim" %>
 	                </li>
+	                <% if current_user.admin? %>
+	                <li class="nav-item">
+	                    <%= link_to "Пользователи", admin_users_path, class: "nav-link nav-sim" %>
+	                </li>
+	                 <% end %>
+
+
 
 	            </ul>
 	            <div class="soc-bt d-none d-xl-block">

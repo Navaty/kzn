@@ -1,6 +1,7 @@
 class Admin::PostsController < Admin::AdminController
 
 	#layout :resolve_layout
+	before_action :check_admin, only: [:destroy]
 
 	def new
 		@post = Post.new

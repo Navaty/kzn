@@ -6,7 +6,7 @@ module SlidersHelper
 	class Carousel
 
 	    def initialize(view)
-	      @sliders = Slider.all
+	      @sliders = Slider.all.order('Position')
 	      @view = view
 	    end
 

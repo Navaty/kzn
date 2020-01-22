@@ -1,6 +1,7 @@
 class Admin::DiscountsController < Admin::AdminController
 
 	#layout :resolve_layout
+		before_action :check_admin, only: [:destroy]
 
 	def new
 		@discount = Discount.new

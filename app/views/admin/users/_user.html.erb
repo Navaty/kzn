@@ -1,0 +1,10 @@
+		<tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= 'Да' if user.admin? %></td>
+          <td><%= user.current_sign_in_at.in_time_zone("Moscow").strftime("%d.%m.%Y %H:%M") if user.current_sign_in_at %></td>
+          <td>
+            <%= link_to 'Изменить', edit_admin_user_path(user), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+          </td>
+        </tr>

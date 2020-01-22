@@ -1,8 +1,8 @@
 class Admin::SlidersController < Admin::AdminController
-
+	before_action :check_admin
 
 	def index
-		@sliders = Slider.all
+		@sliders = Slider.all.order('Position')
 	end
 
 	def show
