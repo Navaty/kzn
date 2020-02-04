@@ -5,9 +5,11 @@ class Admin::DiscountsController < Admin::AdminController
 
 	def new
 		@discount = Discount.new
+
 	end
 
 	def create
+		#raise params.inspect
 		@discount = Discount.new(discount_params)
 
     	if @discount.save
@@ -35,6 +37,7 @@ class Admin::DiscountsController < Admin::AdminController
 	end
 
 	def update
+		#raise params.inspect
 		@discount = Discount.find(params[:id])
 
 		if @discount.update(discount_params)
@@ -52,7 +55,8 @@ class Admin::DiscountsController < Admin::AdminController
 
 	private
     def discount_params
-      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, :adwpos, {images: []})
+      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, :adwpos, 
+      	{images: []}, discount_addresses_attributes: [:address, :id, :_destroy])
     end
 
 

@@ -15,7 +15,7 @@
 	            	<% @discount.images_urls.each_with_index do |p, index| %>
 	                <div class="carousel-item <%= 'active' if index == 0 %>">
 	                    <%= image_tag p, class:  "d-block w-100"%>
-	                </div>s
+	                </div>
 	                <%end%>
 	            </div>
 	            <!--/.Slides-->
@@ -47,6 +47,17 @@
 	                <h4>Описание</h4>
 	                <%= raw @discount.body %>
 	            </div>
+
+
+			<h6>Адреса:</h6>
+				<div class="posttext">
+					<% @discount.discount_addresses.each do |p| %>
+					 <div><%= p.address %> | latittude: <%=p.latitude%> | longitude: <%=p.longitude%>
+					 </div>
+				</div>
+				<% end %>
+
+
 		<div class="socshare">
 			<p class="sharepost"> <span class="sharepost">Поделиться с друзьями:</span>
 

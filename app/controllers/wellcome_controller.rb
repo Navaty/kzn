@@ -1,5 +1,6 @@
 class WellcomeController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
+	layout 'map', :only => :map
 
 	def index
 		@discounts = Discount.active.order('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos').limit(9)
@@ -9,6 +10,11 @@ class WellcomeController < ApplicationController
 
 	def show
 		
+	end
+
+	def map
+
+		render 'map'
 	end
 end
 

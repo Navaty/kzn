@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
     def resolve_layout
 	    case action_name
 	    when "index"
-	      "catalog"
+	      "catalog_place"
 	    else
 	      "article"
 	  end

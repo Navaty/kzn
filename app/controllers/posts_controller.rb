@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 	 	 def resolve_layout
 		    case action_name
 		    when "index"
-		      "catalog"
+		      "catalog_posts"
 		    else
 		      "article"
 		  end

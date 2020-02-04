@@ -1,0 +1,2 @@
+module DiscountAddressHelper
+end

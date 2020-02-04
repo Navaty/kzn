@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:show, :index]
   resources :events, only: [:show]
   resources :places, only: [:show, :index]
-  
+  get 'map/' => 'wellcome#map'
   namespace :admin do
     resources :sales, except: [:show]
     resources :discounts, except: [:show, :index] do

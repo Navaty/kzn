@@ -1,0 +1,5 @@
+class DiscountAddressAddressController < ApplicationController
+	
+	
+	
+end

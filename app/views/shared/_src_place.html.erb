@@ -4,7 +4,10 @@
             <div class="col-md-6 mb-3 cats">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Поиск скидок" %>
             </div> 
-            <div class="col-md-3 mb-3 d-none d-md-block cats form-check form-control">
+            <div class="col-md-2 mb-2 d-none d-md-block cats">
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-2 mb-2 d-none d-md-block cats form-check form-control">
                 <%= check_box_tag :free, true, false, class: " form-check-input", style: "margin-left: 20px" %>
                 <%= label_tag :free, 'Бесплатные', class: "form-check-label", style: "margin-left: 40px" %>
 
