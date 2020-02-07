@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:show, :index]
   resources :events, only: [:show]
   resources :places, only: [:show, :index]
-  get 'map/' => 'wellcome#map'
+  resources :maps, only: [:index]
+
+  
   namespace :admin do
     resources :sales, except: [:show]
     resources :discounts, except: [:show, :index] do
@@ -35,6 +37,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get 'daddresses/' => 'maps#tabdiscounts'
   #get 'moder/' => 'wellcome#show'
    # get'moder/discounts/' => 'discounts#moder'
    # get'moder/posts/' => 'posts#moder'

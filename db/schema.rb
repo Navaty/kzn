@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200130112620) do
+ActiveRecord::Schema.define(version: 20200206122016) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20200130112620) do
     t.datetime "updated_at", null: false
     t.string "images"
     t.integer "adwpos"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["event_id"], name: "index_places_on_event_id"
   end
 

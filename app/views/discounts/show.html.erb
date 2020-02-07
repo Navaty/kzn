@@ -5,6 +5,7 @@
 <%= link_to 'Редактировать', edit_admin_discount_path(@discount) %> |
 <%= link_to 'Удалить', admin_discount_path,  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
 <% end %>
+
 <h1><%= @discount.title %> </h1>
 
 
@@ -50,12 +51,12 @@
 
 
 			<h6>Адреса:</h6>
-				<div class="posttext">
+				<div class="">
 					<% @discount.discount_addresses.each do |p| %>
-					 <div><%= p.address %> | latittude: <%=p.latitude%> | longitude: <%=p.longitude%>
-					 </div>
-				</div>
+					 ул. <%= p.address %>;
+					 
 				<% end %>
+				</div>
 
 
 		<div class="socshare">

@@ -1,5 +1,5 @@
 class WellcomeController < ApplicationController
-	before_action :authenticate_user!, except: [:index]
+	#before_action :authenticate_user!, except: [:index]
 	layout 'map', :only => :map
 
 	def index
@@ -12,9 +12,6 @@ class WellcomeController < ApplicationController
 		
 	end
 
-	def map
 
-		render 'map'
-	end
 end
 

@@ -9,7 +9,7 @@ class Admin::PlacesController < Admin::AdminController
 
 	def create
 		@place = Place.new(place_params)
-
+		
     	if @place.save
       		redirect_to @place
     	else
@@ -36,7 +36,7 @@ class Admin::PlacesController < Admin::AdminController
 		@place = Place.find(params[:id])
 
 		if @place.update(place_params)
-			redirect_to admin_places_path
+			redirect_to @place
 		else
 			render 'new'
 		end
