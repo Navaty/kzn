@@ -5,17 +5,18 @@ class DiscountsController < ApplicationController
 	def index
 		#Перекинь в модель
 		if params[:type].present?
-			@discounts = Discount.active.where("title LIKE ? AND offer LIKE ?","%#{params[:search]}%", "#{params[:type]}").page(params[:page]).order('updated_at DESC')
+			@discounts = Discount.active.where("title LIKE ? AND offer LIKE ?","%#{params[:search]}%", "#{params[:type]}").page(params[:page])
 		elsif params[:search]
-			@discounts = Discount.active.where("title LIKE ?","%#{params[:search]}%").page(params[:page]).order('updated_at DESC')
+			@discounts = Discount.active.where("title LIKE ?","%#{params[:search]}%").page(params[:page])
 		else
-			@discounts = Discount.active.page(params[:page]).order('updated_at DESC')
+			@discounts = Discount.active.page(params[:page])
 		end
+
 		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
 		if params[:order]
-			@discounts.order!(params[:order])
+			@discounts.reorder!(params[:order])
 		else
-			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos, updated_at DESC')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 	end

@@ -1,0 +1,10 @@
+    <tr>
+          <td><%= page.id %></td>
+          <td><%= page.title %></td>
+          <td><%= page.url %></td>
+          <td>
+          	<%= link_to 'Перейти', page_path(page), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Изменить', edit_admin_page_path(page), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Удалить', admin_page_path(page), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+          </td>
+        </tr>

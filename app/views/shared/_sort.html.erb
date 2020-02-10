@@ -1,23 +1,30 @@
 <div class="row sort">
         <div class="col-lg-2 col-5 col-md-4 offset-lg-5">
-            <button class="kz-btn dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сортировать</button>
+
+            <% if params[:controller] == 'discounts' %>
+                <a href="/maps/?type=D"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
+                <% elsif params[:controller] == 'places' %>
+                <a href="/maps/?type=P"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
+                <% elsif params[:controller] == 'sales' %>
+                <a href="/maps/?type=S&amp;id=<%=params[:id]%>"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
+                <% elsif params[:controller] == 'events' %>
+                <a href="/maps/?type=E&amp;id=<%=params[:id]%>"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
+                <%else%>
+            <% end %>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-5 offset-2 offset-md-4 offset-lg-0">
+        <button class="kz-btn dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сортировать</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%= link_to "По названию А-Я", params.merge(:order => "title ASC").permit(:utf8, :search, :type, :commit, :page, :order, :id, :date), class: 'dropdown-item' %>
                 <%= link_to "По названию Я-А", params.merge(:order => "title DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
                 <%= link_to "По дате ↑", params.merge(:order => "updated_at ASC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
                 <%= link_to "По дате ↓", params.merge(:order => "updated_at DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
+                <% if params[:controller] == 'places' || params[:controller] == 'discounts' %>
+                <%# ИСПРАВЬ!!!! В ПГ есть НУЛЛ ЛАСТ! %>
+                <%= link_to "По дате окончания ↑", params.merge(:order => "CASE WHEN end_time IS NULL THEN 1 ELSE 0 END, end_time").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
+                <%= link_to "По дате окончания ↓", params.merge(:order => "CASE WHEN end_time IS NULL THEN 0 ELSE 1 END, end_time DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
+                <% end %>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-5 offset-2 offset-md-4 offset-lg-0">
-            <% if params[:controller] == 'discounts' %>
-            <a href="/maps/?type=D"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
-            <% elsif params[:controller] == 'places' %>
-            <a href="/maps/?type=P"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
-            <% elsif params[:controller] == 'sales' %>
-            <a href="/maps/?type=S&amp;id=<%=params[:id]%>"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
-            <% elsif params[:controller] == 'events' %>
-            <a href="/maps/?type=E&amp;id=<%=params[:id]%>"> <button class="kz-btn"><%= image_tag "map.svg", class: "mapicon", size: "14x20"%>На карте</button> </a>
-            <%else%>
-            <% end %>
         </div>
     </div>

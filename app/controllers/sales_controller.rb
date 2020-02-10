@@ -7,7 +7,7 @@ class SalesController < ApplicationController
 		if params[:order]
 			@discounts.order!(params[:order])
 		else
-			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			@discounts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos, updated_at DESC')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 		render layout: "catalog"

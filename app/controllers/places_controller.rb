@@ -3,6 +3,8 @@ class PlacesController < ApplicationController
 	layout :resolve_layout
 
 	def index
+
+
 		if params[:free]
 			@places = Place.active.where("title LIKE ? AND free = 't'","%#{params[:search]}%").page(params[:page])
 		elsif params[:search]
@@ -10,12 +12,17 @@ class PlacesController < ApplicationController
 		else
 			@places = Place.active.page(params[:page])
 		end
+
+		if params[:date]
+			@places = @places.where("start_time <= ? AND end_time >= ?", params[:date][0].to_date, params[:date][0].to_date)
+		end
+
 		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
 		if params[:order]
 			@places.order!(params[:order])
 		else
 			#@places.order!('title')
-			@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			@places.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos, updated_at DESC')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200206122016) do
+ActiveRecord::Schema.define(version: 20200207130316) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20200206122016) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_events_on_ancestry"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "url", null: false
+    t.string "images"
+    t.string "mtitle"
+    t.string "mdescription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_pages_on_url", unique: true
   end
 
   create_table "places", force: :cascade do |t|

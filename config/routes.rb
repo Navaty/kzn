@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :events, only: [:show]
   resources :places, only: [:show, :index]
   resources :maps, only: [:index]
+  resources :pages, only: [:show]
 
   
   namespace :admin do
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
 
     resources :sliders
     resources :users
+    resources :pages, except: [:show]
   end
 
   get 'daddresses/' => 'maps#tabdiscounts'

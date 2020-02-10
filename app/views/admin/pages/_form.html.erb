@@ -1,0 +1,66 @@
+<%= form_with(model: [:admin, @page], local: true) do |form| %>
+<% if page.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(page.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% page.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="form-group">
+    <%= form.label :Заголовок %><br>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :Описание %><br>
+    <%= form.cktext_area :body, id: :page_body , class:"form-control"%>
+  </div>
+  <div class="form-group">
+    <%= form.label :url %><br>
+    <%= form.text_field :url, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :Изображения %>
+    <div class="image-sortable ">
+      <% page.images.each do |image| %>
+        <div class="image">
+          <%= hidden_field :page, :images, multiple: true, value:  image.cache_name || image.identifier %>
+          <%= image_tag(image.url, height: 50) %>
+          <button type="button" class="remove-image btn btn-danger">Удалить</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+      <div class="image form-group">
+        <%= form.file_field :images, multiple: true, class:"" %>
+      </div>
+
+
+    <%= form.label :meta, "Метатеги:" %>
+
+    <div class="form-group">
+      <%= form.label :mtitle, "Title "%><br>
+      <%= form.text_field :mtitle, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :mdescription, "Description" %><br>
+      <%= form.text_field :mdescription, class:"form-control" %>
+    </div>
+
+
+
+
+
+  <div class="form-group">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
+    <%= link_to 'Назад', :back, class: "btn btn-secondary" %>
+  </div>
+
+<% end %>

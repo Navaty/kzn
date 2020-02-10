@@ -1,16 +1,16 @@
 <div class="container search">
     <%= form_tag discounts_path, :method => 'get', class: "form-group search-form" do %>
         <div class="form-row justify-content-center">
-            <div class="col-md-6 mb-3 cats">
+            <div class="col-md-9 mb-3 cats">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Поиск скидок" %>
             </div> 
-            <div class="col-md-3 mb-3 d-none d-md-block cats">
-                <%= select_tag :type, raw(
+            <!-- <div class="col-md-3 mb-3 d-none d-md-block cats">
+                <%# select_tag :type, raw(
                     "<option selected value=''>Тип скидки</option>
                     <option value='1'>Скидка</option>
                     <option value='2'>2 за 1</option>
                     <option value='3'>Кешбэк</option></select>"), class: "form-control" %>
-            </div>
+            </div> -->
             <div class="col-md-2 mb-3 cats">
                 <%= submit_tag "Поиск", class: "kz-btn form-control d-none d-md-block search-btn-tag" %>
             </div>

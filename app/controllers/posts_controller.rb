@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 			@posts.order!(params[:order])
 		else
 			#@posts.order!('title')
-			@posts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos')
+			@posts.order!('CASE WHEN adwpos IS NULL THEN 1 ELSE 0 END, adwpos, updated_at DESC')
 		end
 		@custom_paginate_renderer = custom_paginate_renderer
 

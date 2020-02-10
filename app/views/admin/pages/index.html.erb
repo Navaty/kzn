@@ -1,0 +1,20 @@
+<h1>Страницы сайта</h1>
+<div class="buttons_panel">
+  <%= link_to 'Новая страница', new_admin_page_path, class: 'btn btn-outline-primary btn-sm' %> 
+</div>
+<br>
+<section id="pages">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Заголовок</th>
+        <th>URL адрес</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    	<%= render @pages %>
+    </tbody>
+  </table>
+</section>
