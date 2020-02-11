@@ -48,7 +48,7 @@ class Admin::PostsController < Admin::AdminController
 
 	private
     def post_params
-      params.require(:post).permit(:title, :body, :tiding_id , :active, :adwpos, {images: []})
+      params.require(:post).permit(:title, :body, :tiding_id, :mtitle, :mdescription, :active, :adwpos, {images: []})
     end
 
     def resolve_layout

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200207130316) do
+ActiveRecord::Schema.define(version: 20200210115925) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.datetime "updated_at", null: false
     t.string "images"
     t.integer "adwpos"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["sale_id"], name: "index_discounts_on_sale_id"
   end
 
@@ -52,6 +54,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["ancestry"], name: "index_events_on_ancestry"
   end
 
@@ -82,6 +86,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.integer "adwpos"
     t.float "latitude"
     t.float "longitude"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["event_id"], name: "index_places_on_event_id"
   end
 
@@ -94,6 +100,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.datetime "updated_at", null: false
     t.string "images"
     t.integer "adwpos"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["tiding_id"], name: "index_posts_on_tiding_id"
   end
 
@@ -102,6 +110,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["ancestry"], name: "index_sales_on_ancestry"
   end
 
@@ -120,6 +130,8 @@ ActiveRecord::Schema.define(version: 20200207130316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "mtitle"
+    t.string "mdescription"
     t.index ["ancestry"], name: "index_tidings_on_ancestry"
   end
 

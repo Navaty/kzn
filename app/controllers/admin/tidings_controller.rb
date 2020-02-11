@@ -35,6 +35,6 @@ class Admin::TidingsController < Admin::AdminController
 
 	private
 	def tiding_params
-		params.require(:tiding).permit(:name, :parent_id)
+		params.require(:tiding).permit(:name, :parent_id, :mtitle, :mdescription)
 	end
 end

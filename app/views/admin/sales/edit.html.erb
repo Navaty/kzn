@@ -10,6 +10,19 @@
     <%= form.collection_select :parent_id, Sale.order(:name), :id, :name, {include_blank: true }, class:"form-control" %> <%# where("id != #{@sale.id}") %>
   </div>
 
+    <div class="form-group">
+      <%= form.label :meta, "Метатеги:" %><br>
+    <div class="form-group">
+      <%= form.label :mtitle, "Title" %><br>
+      <%= form.text_field :mtitle, class:"form-control" %>
+    </div>
+
+      <div class="form-group">
+      <%= form.label :mdescription, "Description" %><br>
+      <%= form.text_field :mdescription, class:"form-control" %>
+    </div>
+  </div>
+
 
 <div class="form-group">
     <%= form.submit "Сохранить", class: "btn btn-primary"  %>

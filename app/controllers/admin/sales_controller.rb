@@ -35,6 +35,6 @@ class Admin::SalesController < Admin::AdminController
 
 	private
 	def sale_params
-		params.require(:sale).permit(:name, :parent_id)
+		params.require(:sale).permit(:name, :parent_id, :mtitle, :mdescription)
 	end
 end

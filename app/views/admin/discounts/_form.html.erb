@@ -31,10 +31,6 @@
     <%= form.label :Категория %><br>
     <%= form.collection_select :sale_id, Sale.order(:name), :id, :name, :promt =>"Select one", class:"form-control" %>
   </div>
-  <div class="form-group">
-    <%= form.label :Тип_предложения %><br>
-    <%= form.number_field :offer, class:"form-control" %>
-  </div>
 
 <div id="faddresses" class="form-group">
   <%= form.label :address, "Адреса" %>
@@ -47,9 +43,9 @@
 
   <div class="form-group">
     <%= form.label :Изображения %>
-    <div class="image-sortable ">
+    <div class="image-sortable">
       <% discount.images.each do |image| %>
-        <div class="image">
+        <div class="image w-50 pb-3">
           <%= hidden_field :discount, :images, multiple: true, value:  image.cache_name || image.identifier %>
           <%= image_tag(image.url, height: 50) %>
           <button type="button" class="remove-image btn btn-danger">Удалить</button>
@@ -62,6 +58,18 @@
         <%= form.file_field :images, multiple: true, class:"" %>
       </div>
 
+  <div class="form-group">
+      <%= form.label :meta, "Метатеги:" %><br>
+    <div class="form-group">
+      <%= form.label :mtitle, "Title" %><br>
+      <%= form.text_field :mtitle, class:"form-control" %>
+    </div>
+
+      <div class="form-group">
+      <%= form.label :mdescription, "Description" %><br>
+      <%= form.text_field :mdescription, class:"form-control" %>
+    </div>
+  </div>
 
   <div class=" form-group">
     <%= form.label :Рекламная_позиция %><br>

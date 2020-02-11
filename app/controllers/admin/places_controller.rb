@@ -50,7 +50,8 @@ class Admin::PlacesController < Admin::AdminController
 
 	private
     def place_params
-      params.require(:place).permit(:title, :body, :start_time, :end_time, :adress, :event_id , :active, :free, :adwpos, {images: []})
+      params.require(:place).permit(:title, :body, :start_time, :end_time, :adress, :event_id, :mtitle, :mdescription,
+       :active, :free, :adwpos, {images: []})
     end
     def resolve_layout
 	    case action_name

@@ -55,7 +55,7 @@ class Admin::DiscountsController < Admin::AdminController
 
 	private
     def discount_params
-      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, :adwpos, 
+      params.require(:discount).permit(:title, :body, :end_time, :adress, :sale_id , :active, :offer, :adwpos, :mtitle, :mdescription,
       	{images: []}, discount_addresses_attributes: [:address, :id, :_destroy])
     end
 
