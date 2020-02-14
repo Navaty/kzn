@@ -13,7 +13,7 @@ class Discount < ApplicationRecord
 
 	#validates_associated :discount_addresses
 
-	self.per_page = 4
+	self.per_page = 27
 
 	
 end

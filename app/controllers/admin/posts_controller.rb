@@ -34,7 +34,7 @@ class Admin::PostsController < Admin::AdminController
 		@post = Post.find(params[:id])
 
 		if @post.update(post_params)
-			redirect_to admin_posts_path
+			redirect_to @post
 		else
 			render 'new'
 		end

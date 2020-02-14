@@ -1,4 +1,7 @@
-<% content_for :title, @place.event.name %>
+<% content_for :mtitle, @place.mtitle %>
+<% content_for :mdescription, @place.mdescription %>
+
+<% content_for :category, @place.event.name %>
 <% content_for :type, 'places' %>
 
 <h1><%= @place.title %> </h1>
@@ -37,11 +40,11 @@
         </div>
         <% end %>
             <div class="posttext">
-	            <span class="posttime">Дата проведения: 
-	            	<% unless @place.start_time.blank? && @place.end_time.blank? %>
+            	<% unless @place.start_time.blank? && @place.end_time.blank? %>
+	            	<span class="posttime">Дата проведения: 
 	            	<%= @place.start_time.strftime("%e.%m.%Y") %> по <%= @place.end_time.strftime("%e.%m.%Y") %>
-	            	<% end %>
-	            </span>
+	            	</span>
+	            <% end %>
 	            <p></p>
 	            <span class="posttime">Адрес: <%= @place.adress %></span>
 	            <p></p>

@@ -1,6 +1,10 @@
 <%# render 'shared/breadcrumb', sale: @discount.sale %>
-<% content_for :title, @discount.sale.name %>
+<% content_for :mtitle, @discount.mtitle %>
+<% content_for :mdescription, @discount.mdescription %>
+
+<% content_for :category, @discount.sale.name %>
 <% content_for :type, 'discounts' %>
+
 <% if user_signed_in? %>
 <%= link_to 'Редактировать', edit_admin_discount_path(@discount) %> |
 <%= link_to 'Удалить', admin_discount_path,  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
@@ -39,43 +43,34 @@
 	            </ol>
         </div>
         <% end %>
-<div class="posttext">
-	            <span class="posttime">Срок действия: <%= @discount.end_time %></span>
-	            <p></p>
-	            <span class="posttime">Адрес: <%= @discount.adress %></span>
-	            <p></p>
-	            <div class="postdesc">
-	                <h4>Описание</h4>
-	                <%= raw @discount.body %>
-	            </div>
+
+		<div class="posttext">
+		            <span class="posttime">Срок действия: <%= @discount.end_time.blank? ? "Ограничен" : @discount.end_time %></span>
+		            <p></p>
+		            <span class="posttime">Адрес: <%= @discount.adress %></span>
+		            <p></p>
+		            <div class="postdesc">
+		                <h4>Описание</h4>
+		                <%= raw @discount.body %>
+		            </div>
+
+			<div class="socshare">
+				<p class="sharepost"> <span class="sharepost">Поделиться с друзьями:</span>
+
+				    <a class="nav-soc" href="#"> <i class="fab fa-facebook-square fa-2x"></i></a>
 
 
-			<h6>Адреса:</h6>
-				<div class="">
-					<% @discount.discount_addresses.each do |p| %>
-					 ул. <%= p.address %>;
-					 
-				<% end %>
-				</div>
+				    <a class="nav-soc" href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
 
+				    <a class="nav-soc" href="#"><i class="fab fa-vk fa-2x"></i></a>
 
-		<div class="socshare">
-			<p class="sharepost"> <span class="sharepost">Поделиться с друзьями:</span>
+				    <a class="nav-soc" href="#"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
 
-			    <a class="nav-soc" href="#"> <i class="fab fa-facebook-square fa-2x"></i></a>
+				    <a class="nav-soc" href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
 
+			</div>
 
-			    <a class="nav-soc" href="#"><i class="fab fa-google-plus-square fa-2x"></i></a>
-
-			    <a class="nav-soc" href="#"><i class="fab fa-vk fa-2x"></i></a>
-
-			    <a class="nav-soc" href="#"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
-
-			    <a class="nav-soc" href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
-
-		</div>
-
-            </div>
+	    </div>
             <div class="col-md-4 mb-4 post-back offset-lg-8">
                 <%= link_to 'Назад к разделу', discounts_path, class: "kz-btn btn-back form-control"%>
             </div>

@@ -1,5 +1,6 @@
 class DiscountsController < ApplicationController
-
+	add_breadcrumb "Главная", :root_path
+	add_breadcrumb "Скидки", :discounts_path
 	layout :resolve_layout
 
 	def index
@@ -23,6 +24,7 @@ class DiscountsController < ApplicationController
 
 	def show
 		@discount = Discount.find(params[:id])
+		add_breadcrumb "#{@discount.title}", :discount_path
 	end
 
 	private

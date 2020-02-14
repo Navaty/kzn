@@ -45,6 +45,7 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.8.1)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.29.0)
@@ -213,6 +214,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  breadcrumbs_on_rails
   byebug
   capybara (>= 2.15)
   carrierwave

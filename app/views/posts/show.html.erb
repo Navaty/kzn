@@ -1,4 +1,8 @@
-<% content_for :title, @post.tiding.name %>
+<% content_for :mtitle, @post.mtitle %>
+<% content_for :mdescription, @post.mdescription %>
+
+
+<% content_for :category, @post.tiding.name %>
 <% content_for :type, 'posts' %>
 
 <h1><%= @post.title %> </h1>
