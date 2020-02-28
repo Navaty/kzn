@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-
+	add_breadcrumb "Главная", :root_path
+	add_breadcrumb "Новости", :posts_path
 	layout :resolve_layout
 
 	def index
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		add_breadcrumb "#{@post.title}", :post_path
 	end
 
 

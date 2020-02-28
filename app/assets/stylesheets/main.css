@@ -187,7 +187,7 @@ h2{
 }
 
 .adws-post{
-    margin-top:340px!important;
+    margin-top:75px!important;
 }
 
 img.adw{
@@ -416,6 +416,17 @@ span.also{
     border: none !important;
     box-shadow: none !important;
     min-width:100px;
+}
+
+
+/* ADWS */
+.sticky {
+  position: fixed;
+  z-index: 101;
+}
+.stop {
+  position: relative;
+  z-index: 101;
 }
 /* ШРИФТ НА ВЕСЬ ПОСТ
 .conpost{

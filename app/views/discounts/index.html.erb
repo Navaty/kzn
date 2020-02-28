@@ -2,10 +2,12 @@
 			<%# render 'shared/catnav' %> 
 			<%# render 'shared/src' %> 
 <% content_for :type, 'discounts' %>
+<% if user_signed_in? %>
 <div class="buttons_panel">
-  <%= link_to 'Новая скидка', new_admin_discount_path, class: 'btn btn-outline-primary btn-sm'  if user_signed_in?%>
+  <%= link_to 'Новая скидка', new_admin_discount_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>		
 <br>
+<% end %>
 <div class="sale">
     <div class="row offer_bloks">
 

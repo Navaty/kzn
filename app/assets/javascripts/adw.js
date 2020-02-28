@@ -1,10 +1,10 @@
 (function(){
-    var a = document.querySelector('#aside1'), b = null, K = null, Z = 0, P = 0, N = 0;  // если у P ноль заменить на число, то блок будет прилипать до того, как верхний край окна браузера дойдёт до верхнего края элемента, если у N — нижний край дойдёт до нижнего края элемента. Может быть отрицательным числом
+    var a = document.querySelector('#aside1'), b = null, K = null, Z = 0, P = 0, N = 0;  // 90 если у P ноль заменить на число, то блок будет прилипать до того, как верхний край окна браузера дойдёт до верхнего края элемента, если у N — нижний край дойдёт до нижнего края элемента. Может быть отрицательным числом
     window.addEventListener('scroll', Ascroll, false);
     document.body.addEventListener('scroll', Ascroll, false);
     function Ascroll() {
         var Ra = a.getBoundingClientRect(),
-            R1bottom = document.querySelector('#article').getBoundingClientRect().bottom;
+            R1bottom = document.querySelector('.col-lg-9').getBoundingClientRect().bottom;
         if (Ra.bottom < R1bottom) {
             if (b == null) {
                 var Sa = getComputedStyle(a, ''), s = '';

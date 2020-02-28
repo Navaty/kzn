@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
-
+	add_breadcrumb "Главная", :root_path
+	add_breadcrumb "Места", :places_path
 	layout :resolve_layout
 
 	def index
@@ -31,6 +32,7 @@ class PlacesController < ApplicationController
 
 	def show
 		@place = Place.find(params[:id])
+		add_breadcrumb "#{@place.title}", :place_path
 	end
 
 
