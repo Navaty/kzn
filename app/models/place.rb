@@ -9,5 +9,5 @@ class Place < ApplicationRecord
 
   after_validation :geocode, if: ->(obj){ obj.adress.present? and obj.adress_changed? }
   
-  self.per_page = 27
+  self.per_page = 7
 end

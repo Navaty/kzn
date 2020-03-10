@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
 			@places = Place.active.page(params[:page])
 		end
 
-		if params[:date]
+		 if params[:date] and !params[:date][0].blank?
 			@places = @places.where("start_time <= ? AND end_time >= ?", params[:date][0].to_date, params[:date][0].to_date)
 		end
 

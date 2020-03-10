@@ -6,14 +6,7 @@
 <br>
 <% end %>
 
-<div class="sale">
-    <div class="row offer_bloks">
+<div class="places" id="places">
+ <%= render 'places' %>
+</div>
 
- <%= render @places %>
-</div>
-</div>
-<div class="paginator d-flex justify-content-center">
-	<nav aria-label="Page navigation">
-		<%= will_paginate @places, renderer: @custom_paginate_renderer %>
-	</nav>
-</div>

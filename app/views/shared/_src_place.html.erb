@@ -1,19 +1,23 @@
 <div class="container search">
-    <%= form_tag places_path, :method => 'get', class: "form-group search-form" do %>
+    <%= form_tag places_path, :method => 'get', :id => "places_search", class: "form-group search-form" do %>
         <div class="form-row justify-content-center">
-            <div class="col-md-6 mb-3 cats">
+            <div class="col-md-6 mb-2 mb-md-0">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Поиск скидок" %>
             </div> 
-            <div class="col-md-2 mb-2 d-block cats"><input placeholder="Выбрать день" class="form-control" type="text" onfocus="(this.type='date')" id="date">
+
+            <div class="col-md-3 mb-2 d-block mb-md-0">
+
+
+                  <input class="form-control" type="text" name="date[]" id="btdate" placeholder="Выберите день" onfocus="(this.type='date');(this.click())" onblur="(this.type='text')"> 
                 
             </div>
-            <div class="col-md-2 mb-2 d-block cats form-check form-control">
-                <%= check_box_tag :free, true, false, class: " form-check-input", style: "margin-left: 20px" %>
-                <%= label_tag :free, 'Бесплатные', class: "form-check-label", style: "margin-left: 40px" %>
 
-            </div>
-            <div class="col-md-2 mb-3 cats">
-                <%= submit_tag "Поиск", class: "kz-btn form-control d-none d-md-block search-btn-tag" %>
+            <div class="col-md-3 d-block mb-md-0 form-check">
+                <span class="form-control">
+                <%= check_box_tag :free, true, params[:free], class: " form-check-input ", style: "margin-left: 5px" %>
+                <%= label_tag :free, 'Бесплатные', class: "form-check-label", style: "margin-left: 25px" %>
+                </span>
+
             </div>
         </div>
 <% end%>

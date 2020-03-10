@@ -15,3 +15,22 @@
 //= require jquery
 //= require_tree ./boots/
 
+
+$(document).on('turbolinks:load', function () {
+	$(document).on("click",".paginator a", function() {
+		$.getScript(this.href);
+		return false;
+	});
+$(document).on("click",".cat-sort a", function() {
+		$.getScript(this.href);
+		return false;
+	});
+
+  $("#places_search input").on("keyup change",function() {
+    $.get($("#places_search").attr("action"), $("#places_search").serialize(), null, "script");
+    $(".map-cat-btn").attr("href", "/maps/?type=P&"+ $("#places_search").serialize());
+    console.log($("#places_search").serialize());
+    return false;
+  });
+
+});
