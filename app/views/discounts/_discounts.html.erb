@@ -1,0 +1,26 @@
+  <div class="row offer_bloks">
+    <% @discounts.each do |discount| %>
+	    <div class="col-md-4 col-sm-12 offer_bloks_el">
+	      <a href=<%= discount_path(discount) %>>
+	          <%= if discount.images.any? 
+	            image_tag discount.images_urls[0], class: "offers_elem"
+	            end %>
+	          <div class="offers_elem_text">
+	           <%= discount.title %>
+	          </div>
+	      </a>
+	      <% if user_signed_in? %>
+	      <%= link_to 'Редактировать', edit_admin_discount_path(discount) %> 
+	        <% if current_user.admin? %> |
+	          <%= link_to 'Удалить', admin_discount_path(discount),  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
+	        <% end %>
+	      <% end %>
+	    </div>
+    <% end %>
+   </div>
+
+<div class="paginator d-flex justify-content-center">
+	<nav aria-label="Page navigation">
+		<%= will_paginate @discounts, renderer: @custom_paginate_renderer %>
+	</nav>
+</div>

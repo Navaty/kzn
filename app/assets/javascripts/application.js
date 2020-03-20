@@ -17,11 +17,8 @@
 
 
 $(document).on('turbolinks:load', function () {
+
 	$(document).on("click",".paginator a", function() {
-		$.getScript(this.href);
-		return false;
-	});
-$(document).on("click",".cat-sort a", function() {
 		$.getScript(this.href);
 		return false;
 	});
@@ -29,8 +26,20 @@ $(document).on("click",".cat-sort a", function() {
   $("#places_search input").on("keyup change",function() {
     $.get($("#places_search").attr("action"), $("#places_search").serialize(), null, "script");
     $(".map-cat-btn").attr("href", "/maps/?type=P&"+ $("#places_search").serialize());
-    console.log($("#places_search").serialize());
+    return false;
+  });
+
+  $("#discounts_search input").on("keyup change",function() {
+    $.get($("#discounts_search").attr("action"), $("#discounts_search").serialize(), null, "script");
+    $(".map-cat-btn").attr("href", "/maps/?type=D&"+ $("#discounts_search").serialize());
     return false;
   });
 
 });
+
+//Сортировка
+  $(document).on("click",".cat-sort .dropdown-item", function() {
+    $(".sort-field").val(this.value);
+    $("#search").keyup();
+    return false;
+  });

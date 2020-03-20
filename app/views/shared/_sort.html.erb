@@ -16,14 +16,16 @@
         <div class="col-lg-2 col-md-4 col-5 offset-2 offset-md-4 offset-lg-0 cat-sort">
         <button class="kz-btn dropdown-toggle ml-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сортировать</button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <%= link_to "По названию А-Я", params.merge(:order => "title ASC").permit(:utf8, :search, :type, :commit, :page, :order, :id, :date), class: 'dropdown-item' %>
-                <%= link_to "По названию Я-А", params.merge(:order => "title DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
-                <%= link_to "По дате ↑", params.merge(:order => "updated_at ASC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
-                <%= link_to "По дате ↓", params.merge(:order => "updated_at DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
+                <%= button_tag "Сбросить", class: 'dropdown-item', value: "" %>
+                <%= button_tag "Сначала новые", class: 'dropdown-item', value: "updated_at DESC" %>
+
                 <% if params[:controller] == 'places' || params[:controller] == 'discounts' %>
                 <%# ИСПРАВЬ!!!! В ПГ есть НУЛЛ ЛАСТ! %>
-                <%= link_to "По дате окончания ↑", params.merge(:order => "CASE WHEN end_time IS NULL THEN 1 ELSE 0 END, end_time").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
-                <%= link_to "По дате окончания ↓", params.merge(:order => "CASE WHEN end_time IS NULL THEN 0 ELSE 1 END, end_time DESC").permit(:utf8, :search, :type, :commit, :page, :order, :id), class: 'dropdown-item' %>
+                <%= button_tag "Скоро завершатся", class: 'dropdown-item', value: "CASE WHEN end_time IS NULL THEN 1 ELSE 0 END, end_time" %>
+                <% end %>
+                <% if params[:controller] == 'discounts' %>
+                <%= button_tag "По размеру %", class: 'dropdown-item', value: "CASE WHEN end_time IS NULL THEN 1 ELSE 0 END, end_time" %>
+
                 <% end %>
             </div>
         </div>

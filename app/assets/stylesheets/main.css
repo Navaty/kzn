@@ -404,10 +404,7 @@ span.also{
     float: none;
 }
 
-.collapse.show {
-    height: 90vh;
-    overflow: scroll;
-}
+
 
 .cat-groups-mob{
 }

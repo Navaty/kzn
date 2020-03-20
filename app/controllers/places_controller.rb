@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
 
 	def index
 
-
+		#ВЫНЕСИ В МОДЕЛЬ!
 		if params[:free]
 			@places = Place.active.where("title LIKE ? AND free = 't'","%#{params[:search]}%").page(params[:page])
 		elsif params[:search]
@@ -19,7 +19,7 @@ class PlacesController < ApplicationController
 		end
 
 		#Исправь обязательно! Сделай нормально без дырок в инъекцию.
-		if params[:order]
+		if params[:order] and !params[:order].blank?
 			@places.order!(params[:order])
 		else
 			#@places.order!('title')

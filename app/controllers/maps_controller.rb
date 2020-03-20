@@ -21,7 +21,29 @@ private
 	def get_markers(par) 
 		@result = {:features => []}
 		case par[:type] #D - discount P-places S-sales E-events
-		when "D" # Похоже, что решение хуже чем у S и P Попробуй потом
+		when "D" # Похоже, что решение хуже чем у S и P Попробуй потом (Писал когда был pluck)
+			if par[:search]
+				discounts = Discount.active.where("title LIKE ?","%#{par[:search]}%")
+			else
+				discounts = Discount.active
+			end
+			discounts.each do |discount|
+				discount.discount_addresses.each do |addr|
+		        	(@result[:features]||={}) << {'type' => "Feature", 'id' => addr[:id], 'geometry' =>
+		        	 {:type => 'Point', :coordinates => [addr[:latitude],addr[:longitude]] },
+		        	 :properties => {:balloonContentHeader =>
+		        	  "<a target='_blank' href='#{discount_path(discount)}'><img src='#{discount.images_urls[0]}'  width=300px height=150px></a>",
+		        	   :balloonContentBody => 
+		        	   "<font size=5><b><a style = 'color:black;' target='_blank' href='#{discount_path(discount)}'>#{discount.title}</a></b></font>", 
+		        	   :balloonContentFooter => "<font size=1>Информация предоставлена: </font> <strong>этим балуном</strong>", 
+		        	   :clusterCaption => "<strong><s>Еще</s> одна</strong> метка", 
+		        	   :hintContent => "<strong>Текст  <s>подсказки</s></strong>"}
+	        	}
+	        	end
+	    	end
+
+		    return @result
+=begin
 		        pluck_fields = DiscountAddress.pluck(:latitude, :longitude, :discount_id, :id)
 		        pluck_fields.each do |a|
 	        		b = Discount.find(a[2])
@@ -36,7 +58,7 @@ private
 	        	}
 	    	end
 	    	return @result
-
+=end
 		when 'S'
 			if par[:id]
 				discounts = Discount.where(sale_id: [Sale.find(par[:id]).subtree_ids]).active
@@ -59,7 +81,19 @@ private
 	    	
 		when 'P'
 			# pluck_fields = Place.pluck(:latitude, :longitude, :, :id)
-				places = Place.active
+				if par[:free]
+					places = Place.active.where("title LIKE ? AND free = 't'","%#{par[:search]}%")
+				elsif par[:search]
+					places = Place.active.where("title LIKE ?","%#{par[:search]}%")
+				else
+					places = Place.active
+				end
+
+				 if par[:date] and !par[:date].blank?
+					places = places.where("start_time <= ? AND end_time >= ?", par[:date].to_date, par[:date].to_date)
+				end
+
+
 		        places.each do |a|
 		        	if a[:latitude].present? && a[:longitude].present?
 		        	(@result[:features]||={}) << {'type' => "Feature", 'id' => a[:id],
@@ -131,7 +165,7 @@ private
 		end
 	end
 	def maps_params
-		params.require(:map).permit(:type,:id)
+		params.require(:map).permit(:type,:id, :free, :search, :date)
 	end
 
 end

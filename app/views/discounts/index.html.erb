@@ -2,20 +2,14 @@
 			<%# render 'shared/catnav' %> 
 			<%# render 'shared/src' %> 
 <% content_for :type, 'discounts' %>
+
 <% if user_signed_in? %>
 <div class="buttons_panel">
   <%= link_to 'Новая скидка', new_admin_discount_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>		
 <br>
 <% end %>
-<div class="sale">
-    <div class="row offer_bloks">
 
- <%= render @discounts %>
-</div>
-</div>
-<div class="paginator d-flex justify-content-center">
-	<nav aria-label="Page navigation">
-		<%= will_paginate @discounts, renderer: @custom_paginate_renderer %>
-	</nav>
+<div class="sale" id="discounts">
+ <%= render 'discounts' %>
 </div>

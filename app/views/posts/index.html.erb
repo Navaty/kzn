@@ -1,4 +1,5 @@
 <% content_for :type, 'posts' %>
+
 <% if user_signed_in? %>
 <div class="buttons_panel">
   <%= link_to 'Новая новость', new_admin_post_path, class: 'btn btn-outline-primary btn-sm' %>
@@ -6,15 +7,6 @@
 <br>
 <% end %>
 
-<div class="sale">
-    <div class="row offer_bloks">
-
- <%= render @posts %>
-</div>
-</div>
-
-<div class="paginator d-flex justify-content-center">
-	<nav aria-label="Page navigation">
-		<%= will_paginate @posts, renderer: @custom_paginate_renderer %>
-	</nav>
+<div class="sale" id="posts">
+	 <%= render 'posts' %>
 </div>

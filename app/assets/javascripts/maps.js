@@ -30,7 +30,7 @@ function getJsonFromUrl(url) {
 }
 
 var params = getJsonFromUrl();
-
+console.log(params)
 
     // Функция ymaps.ready() будет вызвана, когда
     // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -68,7 +68,10 @@ var params = getJsonFromUrl();
                 data: {
                     map: {
                     type: params['type'],
-                    id: params['id']
+                    id: params['id'],
+                    free: params['free'],
+                    search: params['search'],
+                    date: params['date[]']
                     }
                 }
 		    }).done(function(data) {

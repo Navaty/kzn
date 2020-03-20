@@ -1,0 +1,26 @@
+   <div class="row offer_bloks">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 col-sm-12 offer_bloks_el">
+        <a href=<%= post_path(post) %>>
+            <%= if post.images.any? 
+              image_tag post.images_urls[0], class: "offers_elem"
+              end %>
+            <div class="offers_elem_text">
+             <%= post.title %>
+            </div>
+        </a>
+         <% if user_signed_in? %>
+        <%= link_to 'Редактировать', edit_admin_post_path(post) %> 
+          <% if current_user.admin? %> |
+            <%= link_to 'Удалить', admin_post_path(post),  method: :delete, data: { confirm: 'Подтвердите удаление?' } %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="paginator d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+      <%= will_paginate @posts, renderer: @custom_paginate_renderer %>
+    </nav>
+  </div>

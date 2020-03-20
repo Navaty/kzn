@@ -1,12 +1,13 @@
 <div class="container search">
-    <%= form_tag posts_path, :method => 'get', class: "form-group search-form" do %>
+    <%= form_tag posts_path, :method => 'get', :id => "discounts_search", class: "form-group search-form" do %>
+        <%= hidden_field_tag :order, params[:order], :id => "order_field", class: "sort-field" %>
         <div class="form-row justify-content-center">
-            <div class="col-md-9 mb-5 cats">
+            <div class="col-md-12 mb-3 cats">
                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Поиск скидок" %>
             </div> 
-            <div class="col-md-2 mb-4 cats">
+           <!-- <div class="col-md-2 mb-4 cats">
                 <%= submit_tag "Поиск", class: "kz-btn form-control d-none d-md-block search-btn-tag" %>
-            </div>
+            </div> -->
         </div>
 <% end%>
 </div>
